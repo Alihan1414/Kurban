@@ -1,26 +1,32 @@
 /* ==========================================================================
-   ÇınarDere Kurban - CSS Premium Theme (Black & Gold)
+   ÇınarDere Kurban - CSS Clean Light Theme (White & Emerald)
    ========================================================================== */
 :root {
-    /* Color Palette - Premium Black & Gold Theme */
-    --primary: #0B0D0E; /* Deep Black */
-    --primary-light: #1A1D1E; /* Lighter Black/Grey */
-    --gold: #D4AF37; /* Classic Rich Gold */
-    --gold-light: #F1D592; /* High-light Gold */
+    /* Color Palette - Clean White & Emerald Green */
+    --primary: #1A1D1E; /* Dark text */
+    --primary-light: #2D3436; /* Secondary dark */
+    --green: #1B7A3D; /* Emerald Green - Main brand */
+    --green-light: #27AE60; /* Lighter green */
+    --green-dark: #145A2C;
+    --gold: #D4AF37; /* Gold accent */
+    --gold-light: #F1D592;
     --gold-dark: #B49020;
-    --gold-gradient: linear-gradient(135deg, #F1D592 0%, #D4AF37 50%, #B49020 100%);
-    --accent: #F9F9F9; /* Off-White for sections */
+    --gold-gradient: linear-gradient(135deg, #1B7A3D 0%, #27AE60 50%, #1B7A3D 100%);
+    --accent: #FFFFFF; /* Pure White */
+    --accent-soft: #F8F9FA; /* Soft off-white */
     --text-white: #FFFFFF;
-    --text-muted: #A0A0A0;
-    --border-color: rgba(212, 175, 55, 0.3); /* Transparent Gold Border */
+    --text-dark: #1A1D1E;
+    --text-muted: #6C757D;
+    --border-color: rgba(27, 122, 61, 0.2); /* Green border */
+    --border-light: #E9ECEF;
 
     /* Typography */
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Inter', sans-serif;
 
     /* Effects & Shadows */
-    --shadow-gold: 0 10px 20px -5px rgba(212, 175, 55, 0.2);
-    --shadow-dark: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.06);
+    --shadow-medium: 0 10px 30px rgba(0, 0, 0, 0.08);
     
     /* Transitions */
     --transition-medium: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -41,14 +47,14 @@
     width: 6px;
 }
 ::-webkit-scrollbar-track {
-    background: var(--primary);
+    background: #F0F0F0;
 }
 ::-webkit-scrollbar-thumb {
-    background: var(--gold);
+    background: var(--green);
     border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--gold-light);
+    background: var(--green-light);
 }
 
 body {
@@ -85,7 +91,7 @@ ul {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    color: var(--gold); /* Fallback */
+    color: var(--green); /* Fallback */
     display: inline-block;
 }
 
@@ -95,7 +101,7 @@ ul {
     justify-content: center;
     gap: 15px;
     margin: 1.5rem auto;
-    color: var(--gold);
+    color: var(--green);
     font-size: 0.8rem;
 }
 
@@ -121,9 +127,10 @@ ul {
 
 .navbar.scrolled {
     padding: 1rem 0;
-    background: rgba(11, 13, 14, 0.95);
+    background: rgba(255, 255, 255, 0.97);
     backdrop-filter: blur(15px);
-    border-bottom: 1px solid var(--gold);
+    border-bottom: 1px solid var(--border-light);
+    box-shadow: var(--shadow-soft);
 }
 
 .nav-container {
@@ -136,7 +143,7 @@ ul {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    color: var(--gold);
+    color: var(--green);
 }
 
 .logo svg {
@@ -175,13 +182,22 @@ ul {
     transition: color 0.3s;
 }
 
-.nav-links a:hover {
-    color: var(--gold);
+.navbar.scrolled .nav-links a {
+    color: var(--text-dark);
+}
+
+.nav-links a:hover,
+.navbar.scrolled .nav-links a:hover {
+    color: var(--green);
+}
+
+.navbar.scrolled .logo {
+    color: var(--green);
 }
 
 .btn-primary-small {
-    background-color: var(--gold);
-    color: var(--primary) !important;
+    background-color: var(--green);
+    color: white !important;
     padding: 0.6rem 1.5rem;
     border-radius: 50px;
     font-weight: 700;
@@ -189,7 +205,7 @@ ul {
 
 .mobile-menu-btn {
     display: none;
-    color: var(--gold);
+    color: var(--green);
 }
 
 /* ==========================================================================
@@ -209,7 +225,7 @@ ul {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 100%);
+    background: linear-gradient(to bottom, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.4) 100%);
 }
 
 .hero-content {
@@ -221,20 +237,20 @@ ul {
 
 .hero-content h1 {
     font-size: 4rem;
-    color: var(--text-white);
+    color: var(--primary);
     margin-bottom: 1.5rem;
     line-height: 1.1;
-    text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    text-shadow: none;
 }
 
 .hero-content p {
     font-size: 1.3rem;
-    color: var(--gold-light);
+    color: var(--primary-light);
     margin-bottom: 3rem;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .hero-buttons {
@@ -254,26 +270,26 @@ ul {
 }
 
 .btn-primary.gold {
-    background: var(--gold);
-    color: var(--primary);
-    border: 2px solid var(--gold);
+    background: var(--green);
+    color: white;
+    border: 2px solid var(--green);
 }
 
 .btn-primary.gold:hover {
-    background: transparent;
-    color: var(--gold);
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+    background: var(--green-light);
+    color: white;
+    box-shadow: 0 0 20px rgba(27, 122, 61, 0.4);
 }
 
 .btn-secondary {
     background: transparent;
-    color: var(--text-white);
-    border: 2px solid var(--text-white);
+    color: var(--green);
+    border: 2px solid var(--green);
 }
 
 .btn-secondary:hover {
-    background: var(--text-white);
-    color: var(--primary);
+    background: var(--green);
+    color: white;
 }
 
 /* ==========================================================================
@@ -281,8 +297,8 @@ ul {
    ========================================================================== */
 .services {
     padding: 8rem 0;
-    background-color: var(--primary);
-    color: var(--text-white);
+    background-color: var(--accent-soft);
+    color: var(--primary);
     position: relative;
     overflow: hidden;
 }
@@ -295,7 +311,7 @@ ul {
     transform: translate(-50%, -50%);
     width: 800px;
     height: 800px;
-    background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, rgba(11, 13, 14, 0) 70%);
+    background: radial-gradient(circle, rgba(27, 122, 61, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
     pointer-events: none;
 }
 
@@ -308,14 +324,14 @@ ul {
 
 .section-header h2 {
     font-size: 2.5rem;
-    color: var(--text-white);
+    color: var(--primary);
     margin-bottom: 0.5rem;
 }
 
 .header-divider {
     width: 80px;
     height: 4px;
-    background-color: var(--gold);
+    background-color: var(--green);
     margin: 0 auto;
 }
 
@@ -326,16 +342,15 @@ ul {
 }
 
 .service-card {
-    background: rgba(26, 29, 30, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(212, 175, 55, 0.2);
+    background: white;
+    border: 1px solid var(--border-light);
     padding: 3rem 2rem;
     text-align: center;
     transition: all 0.4s;
     border-radius: 10px;
     position: relative;
     z-index: 2;
+    box-shadow: var(--shadow-soft);
 }
 
 .service-card:hover {
@@ -348,7 +363,7 @@ ul {
     width: 60px;
     height: 60px;
     margin: 0 auto 2rem auto;
-    color: var(--gold);
+    color: var(--green);
 }
 
 .icon-wrapper svg {
@@ -361,7 +376,7 @@ ul {
     font-size: 1.2rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    color: var(--text-white);
+    color: var(--primary);
 }
 
 .service-card p {
@@ -374,12 +389,12 @@ ul {
    ========================================================================== */
 .pricing {
     padding: 8rem 0;
-    background: var(--primary); /* Dark Section */
-    color: var(--text-white);
+    background: white;
+    color: var(--primary);
 }
 
 .pricing .section-header h2 {
-    color: var(--gold);
+    color: var(--primary);
 }
 
 .pricing .section-header p {
@@ -394,29 +409,30 @@ ul {
 }
 
 .price-card {
-    background: var(--primary-light);
-    border: 1px solid var(--border-color);
+    background: white;
+    border: 1px solid var(--border-light);
     padding: 3rem 2rem;
     border-radius: 15px;
     text-align: center;
     transition: transform 0.3s;
     position: relative;
+    box-shadow: var(--shadow-soft);
 }
 
 .price-card:hover {
     transform: scale(1.03);
-    border-color: var(--gold);
+    border-color: var(--green);
 }
 
 .price-card.highlight {
-    border: 2px solid var(--gold);
+    border: 2px solid var(--green);
     animation: goldGlow 3s infinite alternate;
 }
 
 @keyframes goldGlow {
-    0% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); }
-    50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.6), inset 0 0 15px rgba(212, 175, 55, 0.2); }
-    100% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); }
+    0% { box-shadow: 0 0 15px rgba(27, 122, 61, 0.2); }
+    50% { box-shadow: 0 0 30px rgba(27, 122, 61, 0.4), inset 0 0 15px rgba(27, 122, 61, 0.1); }
+    100% { box-shadow: 0 0 15px rgba(27, 122, 61, 0.2); }
 }
 
 .popular-badge {
@@ -424,8 +440,8 @@ ul {
     top: -15px;
     left: 50%;
     transform: translateX(-50%);
-    background: var(--gold);
-    color: var(--primary);
+    background: var(--green);
+    color: white;
     padding: 0.4rem 1.2rem;
     font-size: 0.75rem;
     font-weight: 800;
@@ -435,7 +451,7 @@ ul {
 
 .card-header h3 {
     font-size: 1.5rem;
-    color: var(--gold);
+    color: var(--green);
     margin-bottom: 1.5rem;
 }
 
@@ -482,7 +498,7 @@ ul {
 .donation-amount {
     font-size: 3.5rem;
     font-family: var(--font-heading);
-    color: var(--gold);
+    color: var(--green);
     font-weight: 700;
     margin-bottom: 1rem;
 }
@@ -492,8 +508,8 @@ ul {
    ========================================================================== */
 .contact-redesign {
     padding: 10rem 0;
-    background: #0B0D0E; /* Pure dark for deep contrast */
-    color: #FFFFFF;
+    background: white;
+    color: var(--primary);
 }
 
 .contact-wrapper {
@@ -513,12 +529,12 @@ ul {
 .title-underline {
     width: 60px;
     height: 4px;
-    background: #FF0000; /* Red accent as seen in screenshot */
+    background: var(--green);
     margin-bottom: 2rem;
 }
 
 .section-desc {
-    color: #A0A0A0;
+    color: var(--text-muted);
     font-size: 1.1rem;
     margin-bottom: 4rem;
     max-width: 500px;
@@ -539,12 +555,13 @@ ul {
 .box-icon {
     width: 50px;
     height: 50px;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--accent-soft);
+    border: 1px solid var(--border-light);
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #FFFFFF;
+    color: var(--green);
     flex-shrink: 0;
 }
 
@@ -563,7 +580,7 @@ ul {
 .box-content a, .box-content p {
     font-size: 1.4rem;
     font-weight: 700;
-    color: #FFFFFF;
+    color: var(--primary);
     display: block;
 }
 
@@ -577,10 +594,11 @@ ul {
 
 /* Form Styles */
 .contact-form-container {
-    background: #FFFFFF;
-    border-radius: 0; /* Keep it sharp and professional */
+    background: var(--accent-soft);
+    border-radius: 15px;
     padding: 4rem;
-    color: #1A1D1E;
+    color: var(--primary);
+    border: 1px solid var(--border-light);
 }
 
 .form-title {
@@ -637,12 +655,12 @@ ul {
 .form-group select:focus, 
 .form-group textarea:focus {
     outline: none;
-    border-color: #FF0000;
+    border-color: var(--green);
     background: #FFFFFF;
 }
 
 .btn-form-submit {
-    background: #A10A0A; /* Dark Red as seen in screenshot */
+    background: var(--green);
     color: #FFFFFF;
     border: none;
     padding: 1.25rem;
@@ -652,12 +670,13 @@ ul {
     cursor: pointer;
     transition: all 0.3s;
     margin-top: 1rem;
+    border-radius: 5px;
 }
 
 .btn-form-submit:hover {
-    background: #C10C0C;
+    background: var(--green-light);
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(161, 10, 10, 0.2);
+    box-shadow: 0 10px 20px rgba(27, 122, 61, 0.2);
 }
 
 @media (max-width: 992px) {
@@ -677,10 +696,10 @@ ul {
    Footer
    ========================================================================== */
 footer {
-    background: var(--primary);
-    color: var(--text-white);
+    background: var(--accent-soft);
+    color: var(--primary);
     padding: 5rem 0 2rem;
-    border-top: 1px solid #222;
+    border-top: 1px solid var(--border-light);
 }
 
 .footer-content {
@@ -700,9 +719,9 @@ footer {
    Stats Bar
    ========================================================================== */
 .stats-bar {
-    background: var(--primary);
+    background: white;
     padding: 4rem 0;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    border-bottom: 1px solid var(--border-light);
 }
 
 .stats-grid {
@@ -714,7 +733,7 @@ footer {
 
 .stat-item {
     padding: 1.5rem;
-    border-right: 1px solid rgba(212, 175, 55, 0.15);
+    border-right: 1px solid var(--border-light);
 }
 
 .stat-item:last-child {
@@ -730,7 +749,7 @@ footer {
 }
 
 .stat-label {
-    color: var(--text-white);
+    color: var(--primary);
     font-size: 1rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -843,12 +862,13 @@ footer {
     display: flex;
     align-items: center;
     gap: 2rem;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-    border: 1px solid var(--border-color);
+    background: white;
+    border: 1px solid var(--border-light);
     border-radius: 16px;
     padding: 2.5rem 3rem;
     margin-top: 5rem;
-    color: var(--text-white);
+    color: var(--primary);
+    box-shadow: var(--shadow-soft);
 }
 
 .quote-icon {
@@ -1371,8 +1391,8 @@ footer {
    ========================================================================== */
 .kurban-guide {
     padding: 8rem 0;
-    background: var(--primary);
-    color: var(--text-white);
+    background: var(--accent-soft);
+    color: var(--primary);
 }
 
 .guide-grid {
@@ -1420,7 +1440,7 @@ footer {
 }
 
 .benefit-list .number {
-    color: var(--gold);
+    color: var(--green);
     font-weight: 700;
     flex-shrink: 0;
 }
@@ -1468,7 +1488,7 @@ footer {
     font-weight: 700;
     font-size: 0.9rem;
     text-transform: uppercase;
-    color: var(--text-white);
+    color: var(--primary);
     margin-bottom: 0.5rem;
 }
 
@@ -1488,7 +1508,7 @@ footer {
     .process-steps { flex-wrap: wrap; gap: 1rem; }
     .step-arrow { display: none; }
     .process-step { flex: 0 0 calc(50% - 0.5rem); }
-    .info-quote-banner { flex-direction: column; text-align: center; }
+    .info-quote-banner { flex-direction: column; text-align: center; gap: 1rem; }
 }
 
 @media (max-width: 768px) {
@@ -1496,45 +1516,57 @@ footer {
     .mobile-menu-btn { display: block; }
     .hero-content h1 { font-size: 2.5rem; }
     .hero-buttons { flex-direction: column; }
-    .contact-info { padding: 3rem 2rem; }
+    .contact-info { padding: 3rem 1rem; }
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
-    .stat-number { font-size: 2.5rem; }
+    .stat-number { font-size: 2.2rem; }
     .process-step { flex: 0 0 100%; }
-    .info-quote-banner { padding: 2rem 1.5rem; }
+    .info-quote-banner { padding: 1.5rem; }
 
-    /* Mobile Light Chic Theme Override for Dark Sections */
+    /* Mobile Chic Theme Override */
     .contact-redesign {
-        background: #FFFFFF; /* Chic White */
-        color: #1A1D1E; /* Dark elegant text */
-        padding: 5rem 0;
+        background: #FFFFFF;
+        color: var(--primary);
+        padding: 4rem 0;
+    }
+
+    .contact-wrapper {
+        gap: 3rem;
     }
 
     .contact-details .section-title {
-        color: #1A1D1E;
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
     }
 
-    .contact-details .section-desc {
-        color: #666;
+    .title-underline {
+        margin-bottom: 1.5rem;
     }
 
-    .box-icon {
-        background: rgba(0, 0, 0, 0.05); /* Light grey icon bg */
-        color: #1A1D1E; /* Dark icon */
+    .section-desc {
+        font-size: 0.95rem;
+        margin-bottom: 2.5rem;
     }
 
-    .box-icon.whatsapp {
-        background: rgba(37, 211, 102, 0.1);
-        color: #25D366;
+    .info-list {
+        gap: 1.5rem;
     }
 
     .box-content a, .box-content p {
-        color: #1A1D1E;
+        font-size: 1.1rem;
     }
 
     .contact-form-container {
-        padding: 2rem 1.5rem;
-        background: #F8F9FA; /* Off-white to distinguish from pure white base */
-        border-radius: 16px;
+        padding: 2.5rem 1.5rem;
+        border-radius: 12px;
+    }
+
+    .form-title {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
     }
 }
 

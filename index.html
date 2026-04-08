@@ -31,7 +31,7 @@
                 <li><a href="#pricing">2026 Hisseler</a></li>
                 <li><a href="#contact" class="btn-primary-small">İletişim</a></li>
             </ul>
-            <div class="mobile-menu-btn">
+            <div class="mobile-menu-btn" id="mobile-menu-open">
                 <i data-lucide="menu"></i>
             </div>
         </div>
@@ -582,6 +582,51 @@
             </div>
         </div>
     </footer>
+
+    <!-- Mobile Menu Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer">
+        <div class="drawer-header">
+            <div class="logo">
+                <img src="assets/logo.png" alt="Logo" class="custom-logo">
+                <span>ÇınarDere</span>
+            </div>
+            <button class="drawer-close" id="mobile-menu-close">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+        <div class="drawer-body">
+            <ul class="drawer-links">
+                <li><a href="#hero">Ana Sayfa</a></li>
+                <li><a href="#services">Neden Biz?</a></li>
+                <li><a href="#process">Hizmet Süreci</a></li>
+                <li><a href="#pricing">2026 Hisseler</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+            <div class="drawer-info">
+                <div class="info-item">
+                    <i data-lucide="phone"></i>
+                    <a href="tel:05072574034">0507 257 40 34</a>
+                </div>
+                <div class="info-item">
+                    <i data-lucide="map-pin"></i>
+                    <p>BEŞERLİ SOKAK NO : 5</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+
+    <!-- Fixed Mobile Bottom Bar -->
+    <div class="mobile-bottom-bar">
+        <a href="tel:05072574034" class="bottom-item">
+            <i data-lucide="phone"></i>
+            <span>Hemen Ara</span>
+        </a>
+        <a href="https://wa.me/905072574034" class="bottom-item whatsapp">
+            <i data-lucide="message-circle"></i>
+            <span>WhatsApp</span>
+        </a>
+    </div>
 
     <!-- Scripts -->
     <script src="app.js"></script>

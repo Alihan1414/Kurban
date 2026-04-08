@@ -1403,11 +1403,12 @@ footer {
 }
 
 .guide-card {
-    background: rgba(26, 29, 30, 0.4);
-    border: 1px solid var(--border-color);
+    background: white;
+    border: 1px solid var(--border-light);
     border-radius: 20px;
     padding: 3rem;
     position: relative;
+    box-shadow: var(--shadow-soft);
 }
 
 .card-title {
@@ -1416,7 +1417,7 @@ footer {
     gap: 1rem;
     font-family: var(--font-heading);
     font-size: 1.8rem;
-    color: var(--gold);
+    color: var(--green);
     margin-bottom: 2rem;
 }
 
@@ -1436,7 +1437,7 @@ footer {
     gap: 1rem;
     font-size: 0.95rem;
     line-height: 1.5;
-    color: var(--text-white);
+    color: var(--primary);
 }
 
 .benefit-list .number {
@@ -1472,7 +1473,7 @@ footer {
 .dist-circle {
     width: 70px;
     height: 70px;
-    border: 2px solid var(--gold);
+    border: 2px solid var(--green);
     border-radius: 50%;
     margin: 0 auto 1rem;
     display: flex;
@@ -1481,7 +1482,7 @@ footer {
     font-family: var(--font-heading);
     font-size: 1.4rem;
     font-weight: 700;
-    color: var(--gold);
+    color: var(--green);
 }
 
 .dist-label {
@@ -1522,10 +1523,8 @@ footer {
     .process-step { flex: 0 0 100%; }
     .info-quote-banner { padding: 1.5rem; }
 
-    /* Mobile Chic Theme Override */
+    /* Mobile Layout Fixes */
     .contact-redesign {
-        background: #FFFFFF;
-        color: var(--primary);
         padding: 4rem 0;
     }
 
@@ -1534,7 +1533,7 @@ footer {
     }
 
     .contact-details .section-title {
-        font-size: 2rem;
+        font-size: 2.2rem;
         margin-bottom: 0.5rem;
     }
 
@@ -1543,7 +1542,7 @@ footer {
     }
 
     .section-desc {
-        font-size: 0.95rem;
+        font-size: 1rem;
         margin-bottom: 2.5rem;
     }
 
@@ -1552,16 +1551,15 @@ footer {
     }
 
     .box-content a, .box-content p {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
 
     .contact-form-container {
         padding: 2.5rem 1.5rem;
-        border-radius: 12px;
     }
 
     .form-title {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         margin-bottom: 2rem;
     }
 

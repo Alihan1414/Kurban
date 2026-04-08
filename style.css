@@ -20,12 +20,23 @@
 }
 
 /* Base Reset & Core Styles */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: var(--font-body);
     color: var(--dark);
     background-color: var(--white);
-    overflow-x: hidden;
     line-height: 1.7;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
@@ -266,8 +277,25 @@ h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
 
 /* Custom logo scaling */
 .custom-logo {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--emerald);
     transition: transform 0.3s;
 }
 .custom-logo:hover {
     transform: scale(1.1) rotate(5deg);
 }
+
+/* Ensure Navbar Brand doesn't overflow on small screens */
+@media (max-width: 400px) {
+    .main-brand { font-size: 1.1rem !important; }
+    .logo-text { max-width: 150px; }
+}
+
+/* Remove manual overrides that might cause overflow */
+.container { overflow: hidden; }
+.row { margin-left: 0; margin-right: 0; }
+.col, [class*="col-"] { padding-left: 10px; padding-right: 10px; }
+

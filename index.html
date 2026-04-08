@@ -211,7 +211,7 @@
                         <li><span class="number">6.</span> Kurban Bayramı'nda afv-ı umumî tecellî eder.</li>
                         <li><span class="number">7.</span> İbadetin terk edilmesi manevi felaketlere yol açabilir.</li>
                     </ul>
-                    <div class="source-tag">Süleyman Hilmi Tunahan Hazretleri (k.s)</div>
+
                 </div>
 
                 <!-- 2. Meat Distribution (Image 3) -->
@@ -233,6 +233,56 @@
                             <div class="dist-circle gold-border">1/3</div>
                             <div class="dist-label">AİLE</div>
                             <p>Hane halkı ve evlatlara yedirilir.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kurban Selection Wizard -->
+    <section id="wizard" class="wizard-section">
+        <div class="container">
+            <div class="wizard-container">
+                <div class="wizard-header">
+                    <div class="step-info">ADIM <span id="current-step">1</span> / 5</div>
+                    <div class="progress-bar-wrapper">
+                        <div class="progress-bar" id="progress-bar" style="width: 20%;"></div>
+                    </div>
+                </div>
+
+                <div class="wizard-content" id="wizard-content">
+                    <!-- Step 1: Type Selection -->
+                    <div class="wizard-step active" data-step="1">
+                        <div class="selection-grid">
+                            <div class="selection-card" onclick="selectKurban('buyukbas')">
+                                <div class="badge orange">ÇOK TERCİH EDİLEN</div>
+                                <div class="selection-img">
+                                    <img src="assets/buyukbas.png" alt="Büyükbaş Kurban">
+                                </div>
+                                <div class="selection-info">
+                                    <h3>Büyükbaş</h3>
+                                    <button class="btn-select">SEÇMEK İÇİN TIKLA</button>
+                                </div>
+                            </div>
+                            <div class="selection-card" onclick="selectKurban('kucukbas')">
+                                <div class="selection-img">
+                                    <img src="assets/kucukbas.png" alt="Küçükbaş Kurban">
+                                </div>
+                                <div class="selection-info">
+                                    <h3>Küçükbaş</h3>
+                                    <button class="btn-select">SEÇMEK İÇİN TIKLA</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Other steps will be added via JS or hidden initially -->
+                    <div class="wizard-step" data-step="2">
+                        <div class="step-placeholder">
+                            <h3>Lütfen Kilo/Grup Seçimi Yapın</h3>
+                            <p>İkinci adım detayları hazırlanıyor...</p>
+                            <button class="btn-secondary" onclick="prevStep()">Geri Dön</button>
                         </div>
                     </div>
                 </div>
@@ -303,44 +353,84 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <!-- Contact Section Redesign -->
+    <section id="contact" class="contact-redesign">
         <div class="container">
-            <div class="contact-card reveal">
-                <div class="contact-info">
-                    <h2 class="gold-text-gradient">Bizimle İletişime Geçin</h2>
-                    <div class="luxury-divider" style="margin: 1.5rem 0; justify-content: flex-start;">◆</div>
-                    <p>Daha fazla bilgi ve kayıt işlemleri için bizi arayabilir ya da WhatsApp üzerinden yazabilirsiniz.</p>
+            <div class="contact-wrapper">
+                <!-- Left: Contact Information -->
+                <div class="contact-details">
+                    <h2 class="section-title">İletişime Geçin</h2>
+                    <div class="title-underline"></div>
+                    <p class="section-desc">Kurumsal hizmet talepleriniz ve kurban organizasyonu hakkında detaylı bilgi almak için bize ulaşın.</p>
                     
-                    <div class="info-items">
-                        <div class="info-item">
-                            <i data-lucide="phone-call" class="gold-icon"></i>
-                            <div>
-                                <h4>Telefon & Kayıt Hattı</h4>
-                                <a href="tel:05072574034" class="contact-link">0507 257 40 34</a>
+                    <div class="info-list">
+                        <div class="info-box">
+                            <div class="box-icon"><i data-lucide="phone-forwarded"></i></div>
+                            <div class="box-content">
+                                <h3>Çağrı Merkezi</h3>
+                                <a href="tel:05072574034">0507 257 40 34</a>
+                                <span>HAFTA İÇİ 09:00 - 18:00</span>
                             </div>
                         </div>
-                        <div class="info-item">
-                            <i data-lucide="map-pin" class="gold-icon"></i>
-                            <div>
-                                <h4>Adres</h4>
-                                <p>Çınar Dere Kuran Kursu, Çınardere,<br>Beşerli Sok. No:5, 34896 Pendik/İstanbul</p>
-                                <a href="https://maps.google.com/?q=Çınar+Dere+Kuran+Kursu+Beşerli+Sokak+No:5+Pendik+İstanbul" target="_blank" class="map-link"><i data-lucide="navigation" style="width:14px;height:14px;margin-right:4px;"></i>Haritada Göster</a>
+                        <div class="info-box">
+                            <div class="box-icon"><i data-lucide="mail"></i></div>
+                            <div class="box-content">
+                                <h3>E-posta Adresi</h3>
+                                <a href="mailto:bilgi@cinardere.com">bilgi@cinardere.com</a>
                             </div>
                         </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://wa.me/905072574034" class="whatsapp-btn-full">
-                            <i data-lucide="message-circle"></i> WhatsApp ile Kayıt
-                        </a>
+                        <div class="info-box">
+                            <div class="box-icon"><i data-lucide="map-pin"></i></div>
+                            <div class="box-content">
+                                <h3>Merkez Ofis</h3>
+                                <p>Beşerli Sokak No: 23 Pendik-İstanbul</p>
+                            </div>
+                        </div>
+                        <div class="info-box">
+                            <div class="box-icon whatsapp"><i data-lucide="message-circle"></i></div>
+                            <div class="box-content">
+                                <h3>WhatsApp İletişim</h3>
+                                <a href="https://wa.me/905072574034">0507 257 40 34</a>
+                                <span>HAZIR MESAJ İLE HIZLI İLETİŞİM</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="cta-banner">
-                    <div class="banner-content">
-                        <h3>Vekâlet ile Güvenli Kesim</h3>
-                        <p>ÇınarDere Erenler Kurban 2012 tecrübesiyle ibadetinizin her aşamasında yanınızdayız.</p>
-                        <img src="assets/hero_bg.png" alt="Kurbanlık" class="cta-img">
-                    </div>
+
+                <!-- Right: Application Form -->
+                <div class="contact-form-container">
+                    <h2 class="form-title">Başvuru Formu</h2>
+                    <form id="kurban-form" class="kurban-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">AD SOYAD</label>
+                                <input type="text" id="name" placeholder="Adınız Soyadınız" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">TELEFON</label>
+                                <input type="tel" id="phone" placeholder="0500 000 00 00" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-POSTA <span>(isteğe bağlı)</span></label>
+                            <input type="email" id="email" placeholder="ornek@sirket.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">KONU</label>
+                            <select id="subject" required>
+                                <option value="" disabled selected>Seçiniz...</option>
+                                <option value="Büyükbaş Hisse">Büyükbaş Hisse</option>
+                                <option value="Küçükbaş Kurban">Küçükbaş Kurban</option>
+                                <option value="Bağış Kurbanı">Bağış Kurbanı</option>
+                                <option value="Diğer">Diğer</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">MESAJINIZ</label>
+                            <textarea id="message" rows="4" placeholder="Talebinizi detaylandırınız..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-form-submit">FORMU GÖNDER</button>
+                    </form>
                 </div>
             </div>
         </div>

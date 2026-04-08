@@ -263,13 +263,26 @@ document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
             submitBtn.disabled = true;
 
-            // Simulate server delay
+            // Simulate server delay to show pleasing ui
             setTimeout(() => {
                 submitBtn.style.background = '#28a745';
-                submitBtn.innerHTML = '<i data-lucide="check"></i> BAŞARIYLA GÖNDERİLDİ';
+                submitBtn.innerHTML = '<i data-lucide="check"></i> BAŞARIYLA YÖNLENDİRİLİYOR';
                 lucide.createIcons();
                 
-                // Clear form
+                // Build WhatsApp Message
+                let wpMessage = `*Yeni İletişim Formu Mesajı* 📩\n\n`;
+                wpMessage += `*Ad Soyad:* ${formData.name}\n`;
+                wpMessage += `*Telefon:* ${formData.phone}\n`;
+                if(formData.email) wpMessage += `*E-Posta:* ${formData.email}\n`;
+                wpMessage += `*Konu:* ${formData.subject}\n\n`;
+                wpMessage += `*Mesajınız:*\n${formData.message}`;
+                
+                const encodedMessage = encodeURIComponent(wpMessage);
+                const whatsappNumber = '905072574034';
+                const url = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+                
+                // Open WA and reset form
+                window.open(url, '_blank');
                 contactForm.reset();
 
                 // Reset button after 3 seconds
@@ -279,7 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     submitBtn.disabled = false;
                     lucide.createIcons();
                 }, 3000);
-            }, 1500);
+            }, 1000);
         });
     }
 });

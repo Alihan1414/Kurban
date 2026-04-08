@@ -1501,6 +1501,41 @@ footer {
     .stat-number { font-size: 2.5rem; }
     .process-step { flex: 0 0 100%; }
     .info-quote-banner { padding: 2rem 1.5rem; }
+
+    /* Mobile Light Chic Theme Override for Dark Sections */
+    .contact-redesign {
+        background: #FFFFFF; /* Chic White */
+        color: #1A1D1E; /* Dark elegant text */
+        padding: 5rem 0;
+    }
+
+    .contact-details .section-title {
+        color: #1A1D1E;
+    }
+
+    .contact-details .section-desc {
+        color: #666;
+    }
+
+    .box-icon {
+        background: rgba(0, 0, 0, 0.05); /* Light grey icon bg */
+        color: #1A1D1E; /* Dark icon */
+    }
+
+    .box-icon.whatsapp {
+        background: rgba(37, 211, 102, 0.1);
+        color: #25D366;
+    }
+
+    .box-content a, .box-content p {
+        color: #1A1D1E;
+    }
+
+    .contact-form-container {
+        padding: 2rem 1.5rem;
+        background: #F8F9FA; /* Off-white to distinguish from pure white base */
+        border-radius: 16px;
+    }
 }
 
 /* Custom Logo Styling */

@@ -63,12 +63,138 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressBar = document.getElementById('progress-bar');
     const stepText = document.getElementById('current-step');
     const wizardSteps = document.querySelectorAll('.wizard-step');
+    
+    // Wizard State
+    let wizardData = {
+        type: '',
+        package: '',
+        name: '',
+        phone: '',
+        delivery: '',
+        address: ''
+    };
 
     window.selectKurban = (type) => {
-        console.log("Selected:", type);
+        wizardData.type = type === 'buyukbas' ? 'Büyükbaş' : 'Küçükbaş';
+        
+        // Show correct packages in Step 2
+        document.getElementById('package-buyukbas').style.display = type === 'buyukbas' ? 'grid' : 'none';
+        document.getElementById('package-kucukbas').style.display = type === 'kucukbas' ? 'grid' : 'none';
+        
         nextStep();
     };
 
+    window.selectPackage = (pkg) => {
+        wizardData.package = pkg;
+        
+        // Visual selection
+        document.querySelectorAll('.package-card').forEach(c => c.classList.remove('selected'));
+        event.currentTarget.classList.add('selected');
+        
+        // Slight delay for better UX
+        setTimeout(() => {
+            nextStep();
+        }, 300);
+    };
+
+    window.submitStep3 = () => {
+        const nameInput = document.getElementById('wizard-name');
+        const phoneInput = document.getElementById('wizard-phone');
+        
+        if (!nameInput.value.trim() || !phoneInput.value.trim()) {
+            alert('Lütfen ad soyad ve telefon bilgilerinizi eksiksiz giriniz.');
+            return;
+        }
+
+        wizardData.name = nameInput.value.trim();
+        wizardData.phone = phoneInput.value.trim();
+        nextStep();
+    };
+
+    window.toggleAddressField = (show) => {
+        document.getElementById('address-field-container').style.display = show ? 'block' : 'none';
+    };
+
+    window.submitStep4 = () => {
+        const selectedDelivery = document.querySelector('input[name="delivery"]:checked');
+        
+        if (!selectedDelivery) {
+            alert('Lütfen bir teslimat tercihi seçiniz.');
+            return;
+        }
+
+        wizardData.delivery = selectedDelivery.value;
+        
+        if (wizardData.delivery === 'Adrese Teslim Edilsin') {
+            const addressInput = document.getElementById('wizard-address');
+            if (!addressInput.value.trim()) {
+                alert('Lütfen teslimat adresinizi giriniz.');
+                return;
+            }
+            wizardData.address = addressInput.value.trim();
+        } else {
+            wizardData.address = '';
+        }
+
+        buildSummary();
+        nextStep();
+    };
+
+    const buildSummary = () => {
+        const summaryContainer = document.getElementById('wizard-summary');
+        summaryContainer.innerHTML = `
+            <div class="summary-item">
+                <span>Kurban Türü</span>
+                <span>${wizardData.type}</span>
+            </div>
+            <div class="summary-item">
+                <span>Seçilen Paket</span>
+                <span>${wizardData.package}</span>
+            </div>
+            <div class="summary-item">
+                <span>Vekalet Sahibi</span>
+                <span>${wizardData.name} (${wizardData.phone})</span>
+            </div>
+            <div class="summary-item">
+                <span>Teslimat Tercihi</span>
+                <span>${wizardData.delivery}</span>
+            </div>
+            ${wizardData.address ? `
+            <div class="summary-item">
+                <span>Teslimat Adresi</span>
+                <span>${wizardData.address}</span>
+            </div>` : ''}
+        `;
+    };
+
+    window.finishWizard = () => {
+        const consent = document.getElementById('wizard-consent').checked;
+        
+        if (!consent) {
+            alert('Lütfen bilgilerin doğruluğunu onayladığınızı belirten kutucuğu işaretleyiniz.');
+            return;
+        }
+
+        // Build WhatsApp Message
+        let message = `Selamun Aleyküm, Ön Kayıt oluşturmak istiyorum.\n\n`;
+        message += `*Kurban Türü:* ${wizardData.type}\n`;
+        message += `*Paket:* ${wizardData.package}\n`;
+        message += `*Vekalet Sahibi:* ${wizardData.name}\n`;
+        message += `*Telefon:* ${wizardData.phone}\n`;
+        message += `*Teslimat:* ${wizardData.delivery}\n`;
+        
+        if(wizardData.address) {
+            message += `*Adres:* ${wizardData.address}\n`;
+        }
+        
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappNumber = '905072574034';
+        const url = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+        
+        window.open(url, '_blank');
+    };
+
+    // Navigation Helpers
     window.nextStep = () => {
         if (currentStep < totalSteps) {
             currentStep++;
@@ -110,6 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
             behavior: "smooth"
         });
     };
+
 
     // 5. Contact Form Handling
     const contactForm = document.getElementById('kurban-form');

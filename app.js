@@ -13,6 +13,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Mobile Menu Toggle
+    const mobileDrawer = document.getElementById('mobile-drawer');
+    const drawerOverlay = document.getElementById('drawer-overlay');
+    const menuOpen = document.getElementById('mobile-menu-open');
+    const menuClose = document.getElementById('mobile-menu-close');
+    const drawerLinks = document.querySelectorAll('.drawer-links a');
+
+    const toggleDrawer = (isOpen) => {
+        if (isOpen) {
+            mobileDrawer.classList.add('active');
+            drawerOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+        } else {
+            mobileDrawer.classList.remove('active');
+            drawerOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    };
+
+    menuOpen.addEventListener('click', () => toggleDrawer(true));
+    menuClose.addEventListener('click', () => toggleDrawer(false));
+    drawerOverlay.addEventListener('click', () => toggleDrawer(false));
+
+    drawerLinks.forEach(link => {
+        link.addEventListener('click', () => toggleDrawer(false));
+    });
+
     // 2. Scroll Animation (Reveal Elements on Scroll)
     const revealElements = document.querySelectorAll('.reveal');
 

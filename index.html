@@ -277,12 +277,149 @@
                         </div>
                     </div>
 
-                    <!-- Other steps will be added via JS or hidden initially -->
+                    <!-- Step 2: Package Selection -->
                     <div class="wizard-step" data-step="2">
-                        <div class="step-placeholder">
-                            <h3>Lütfen Kilo/Grup Seçimi Yapın</h3>
-                            <p>İkinci adım detayları hazırlanıyor...</p>
-                            <button class="btn-secondary" onclick="prevStep()">Geri Dön</button>
+                        <h3 class="step-title">Hisse / Paket Seçimi</h3>
+                        <!-- Options for Büyükbaş (Dynamic) -->
+                        <div class="package-options" id="package-buyukbas" style="display: none;">
+                            <div class="package-card" onclick="selectPackage('Grup 1 (28.000 TL - 36.000 TL)')">
+                                <h4>1. GRUP</h4>
+                                <p>Standart hisse seçenekleri</p>
+                                <span class="price">28.000 TL - 36.000 TL</span>
+                            </div>
+                            <div class="package-card highlight" onclick="selectPackage('Grup 2 (36.000 TL - 42.000 TL)')">
+                                <div class="badge orange">EN ÇOK TERCİH EDİLEN</div>
+                                <h4>2. GRUP</h4>
+                                <p>Premium büyükbaş kurban hissesi</p>
+                                <span class="price gold">36.000 TL - 42.000 TL</span>
+                            </div>
+                            <div class="package-card" onclick="selectPackage('Grup 3 (42.000 TL & Üzeri)')">
+                                <h4>3. GRUP</h4>
+                                <p>Lüks sınıf büyük kurbanlıklar</p>
+                                <span class="price">42.000 TL & Üzeri</span>
+                            </div>
+                        </div>
+
+                        <!-- Options for Küçükbaş (Dynamic) -->
+                        <div class="package-options" id="package-kucukbas" style="display: none;">
+                            <div class="package-card" onclick="selectPackage('20-25 kg Ort. (Küçükbaş)')">
+                                <h4>Standart Seçim</h4>
+                                <p>Ortalama 20-25 kg arası karkas et beklentili küçükbaş.</p>
+                                <span class="price">Fiyat Bilgisi Alınız</span>
+                            </div>
+                            <div class="package-card highlight" onclick="selectPackage('26-30 kg Ort. (Küçükbaş)')">
+                                <div class="badge orange">İDEAL SEÇİM</div>
+                                <h4>Büyük Seçim</h4>
+                                <p>Ortalama 26-30 kg arası karkas et beklentili koç/koyun.</p>
+                                <span class="price gold">Fiyat Bilgisi Alınız</span>
+                            </div>
+                        </div>
+
+                        <div class="wizard-actions">
+                            <button class="btn-secondary" onclick="prevStep()"><i data-lucide="arrow-left"></i> Geri Dön</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Vekalet Bilgileri -->
+                    <div class="wizard-step" data-step="3">
+                        <h3 class="step-title">Vekalet Bilgileriniz</h3>
+                        <p class="step-desc">Kurban ibadetinizin vekaleti bu isim adına gerçekleştirilecektir.</p>
+                        
+                        <div class="wizard-form">
+                            <div class="form-group row">
+                                <div>
+                                    <label>AD SOYAD</label>
+                                    <input type="text" id="wizard-name" placeholder="Vekalet Sahibinin Adı Soyadı">
+                                </div>
+                                <div>
+                                    <label>TELEFON NUMARASI</label>
+                                    <input type="tel" id="wizard-phone" placeholder="05XX XXX XX XX">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="wizard-actions">
+                            <button class="btn-secondary" onclick="prevStep()"><i data-lucide="arrow-left"></i> Geri Dön</button>
+                            <button class="btn-primary gold" onclick="submitStep3()">İleri <i data-lucide="arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Teslimat Tercihi -->
+                    <div class="wizard-step" data-step="4">
+                        <h3 class="step-title">Teslimat / Bağış Tercihi</h3>
+                        <p class="step-desc">Kurbanlığınızın size nasıl ulaştırılmasını istersiniz?</p>
+
+                         <div class="delivery-options">
+                            <label class="radio-card">
+                                <input type="radio" name="delivery" value="Adrese Teslim Edilsin" onchange="toggleAddressField(true)">
+                                <div class="radio-content">
+                                    <i data-lucide="truck"></i>
+                                    <div>
+                                        <h4>Adresime Teslim Edilsin</h4>
+                                        <p>Bayramın 1. veya 2. günü belirttiğiniz adrese getirilir.</p>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="radio-card">
+                                <input type="radio" name="delivery" value="Şubeden Teslim Alacağım" onchange="toggleAddressField(false)">
+                                <div class="radio-content">
+                                    <i data-lucide="store"></i>
+                                    <div>
+                                        <h4>Tesislerden Teslim Alacağım</h4>
+                                        <p>Kesim sonrası randevu saatinizde gelip teslim alabilirsiniz.</p>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="radio-card">
+                                <input type="radio" name="delivery" value="Kurum Bağışı (Tümü)" onchange="toggleAddressField(false)">
+                                <div class="radio-content">
+                                    <i data-lucide="heart-handshake"></i>
+                                    <div>
+                                        <h4>Tümünü Bağışlamak İstiyorum</h4>
+                                        <p>Kurbanınız ihtiyaç sahiplerine ulaştırılmak üzere bağışlanır.</p>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="form-group address-group mt-3" id="address-field-container" style="display: none;">
+                            <label>TESLİMAT ADRESİ</label>
+                            <textarea id="wizard-address" rows="3" placeholder="Açık adresinizi giriniz..."></textarea>
+                        </div>
+
+                        <div class="wizard-actions">
+                            <button class="btn-secondary" onclick="prevStep()"><i data-lucide="arrow-left"></i> Geri Dön</button>
+                            <button class="btn-primary gold" onclick="submitStep4()">İleri <i data-lucide="arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Özet -->
+                    <div class="wizard-step" data-step="5">
+                        <div class="summary-card">
+                            <div class="summary-header">
+                                <i data-lucide="check-circle-2" class="success-icon"></i>
+                                <h3>Tercihleriniz Tamamlandı</h3>
+                                <p>Lütfen bilgilerinizi kontrol edip başvurunuzu WhatsApp üzerinden tamamlayın.</p>
+                            </div>
+                            
+                            <div class="summary-list" id="wizard-summary">
+                                <!-- Populated by JS -->
+                            </div>
+
+                            <div class="consent-box">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="wizard-consent">
+                                    <span class="checkmark"></span>
+                                    Bilgilerimin doğru olduğunu ve WhatsApp üzerinden kayıt oluşturmak istediğimi onaylıyorum.
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="wizard-actions">
+                            <button class="btn-secondary" onclick="prevStep()"><i data-lucide="arrow-left"></i> Geri Düzenle</button>
+                            <button class="whatsapp-btn-full" onclick="finishWizard()"><i data-lucide="message-circle"></i> WhatsApp ile Kaydı Tamamla</button>
                         </div>
                     </div>
                 </div>

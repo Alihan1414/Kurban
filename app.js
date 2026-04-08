@@ -57,4 +57,102 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+    // 4. Kurban Selection Wizard Logic
+    let currentStep = 1;
+    const totalSteps = 5;
+    const progressBar = document.getElementById('progress-bar');
+    const stepText = document.getElementById('current-step');
+    const wizardSteps = document.querySelectorAll('.wizard-step');
+
+    window.selectKurban = (type) => {
+        console.log("Selected:", type);
+        nextStep();
+    };
+
+    window.nextStep = () => {
+        if (currentStep < totalSteps) {
+            currentStep++;
+            updateWizardUI();
+        }
+    };
+
+    window.prevStep = () => {
+        if (currentStep > 1) {
+            currentStep--;
+            updateWizardUI();
+        }
+    };
+
+    const updateWizardUI = () => {
+        // Update Progress Bar
+        const progressPercentage = (currentStep / totalSteps) * 100;
+        progressBar.style.width = `${progressPercentage}%`;
+        
+        // Update Step Text
+        stepText.innerText = currentStep;
+
+        // Update Step Visibility
+        wizardSteps.forEach(step => {
+            step.classList.remove('active');
+            if (parseInt(step.dataset.step) === currentStep) {
+                step.classList.add('active');
+            }
+        });
+
+        // Smooth scroll to top of wizard
+        const wizardSection = document.getElementById('wizard');
+        const headerOffset = 100;
+        const elementPosition = wizardSection.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+        });
+    };
+
+    // 5. Contact Form Handling
+    const contactForm = document.getElementById('kurban-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+
+            console.log("Form Submitted:", formData);
+
+            // Premium success feedback
+            const submitBtn = contactForm.querySelector('.btn-form-submit');
+            const originalContent = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i data-lucide="loader-2" class="spin"></i> GÖNDERİLİYOR...';
+            lucide.createIcons();
+            submitBtn.disabled = true;
+
+            // Simulate server delay
+            setTimeout(() => {
+                submitBtn.style.background = '#28a745';
+                submitBtn.innerHTML = '<i data-lucide="check"></i> BAŞARIYLA GÖNDERİLDİ';
+                lucide.createIcons();
+                
+                // Clear form
+                contactForm.reset();
+
+                // Reset button after 3 seconds
+                setTimeout(() => {
+                    submitBtn.style.background = '';
+                    submitBtn.innerHTML = originalContent;
+                    submitBtn.disabled = false;
+                    lucide.createIcons();
+                }, 3000);
+            }, 1500);
+        });
+    }
 });

@@ -200,11 +200,18 @@ h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
 
 /* Animations */
 .reveal {
-    opacity: 0;
-    transform: translateY(30px);
+    opacity: 1; /* Varsayılan olarak görünür */
+    transform: translateY(0);
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.reveal.active {
+
+/* Sadece JavaScript yüklendiyse gizleyip animasyona hazırla */
+.js-ready .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.js-ready .reveal.active {
     opacity: 1;
     transform: translateY(0);
 }

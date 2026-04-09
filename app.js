@@ -95,30 +95,26 @@ document.addEventListener('DOMContentLoaded', () => {
         switch (currentStep) {
             case 1:
                 html = `
-                    <div class="row g-4 justify-content-center px-lg-3">
-                        <div class="col-6 col-md-5 mb-3">
-                            <label class="wizard-card bg-white p-3 p-md-5 border-0 rounded-4 w-100 text-center cursor-pointer position-relative ${wizardData.type === 'Büyükbaş' ? 'border-2 border-secondary' : ''}" style="min-height: 400px; display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.3s ease;">
+                    <h4 class="h5 fw-bold mb-4 text-center">Yatırılacak Hisse Türünü Seçiniz</h4>
+                    <div class="row g-4">
+                        <div class="col-12 col-sm-6">
+                            <label class="wizard-card p-4 border rounded-4 text-center w-100 h-100 d-flex flex-column align-items-center justify-content-center cursor-pointer ${wizardData.type === 'Büyükbaş' ? 'border-success bg-emerald-light' : ''}">
                                 <input type="radio" name="w_type" value="Büyükbaş" class="d-none" ${wizardData.type === 'Büyükbaş' ? 'checked' : ''}>
-                                <span class="badge text-white position-absolute top-0 start-50 translate-middle px-3 py-2 rounded-pill fw-bold" style="background-color: #ff6a00; font-size: 0.65rem; border: 2px solid white;">ÇOK TERCİH EDİLEN</span>
-                                <div class="my-auto">
-                                    <img src="assets/buyukbas.png?v=7" alt="Büyükbaş" class="img-fluid" style="max-height: 170px; object-fit: contain;">
+                                <div class="icon-circle mb-3 ${wizardData.type === 'Büyükbaş' ? 'bg-emerald text-white' : 'bg-light text-emerald'}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 16H2v-3a7 7 0 0 1 10.26-6.19"/><path d="M2 10a5 5 0 0 0 9 3"/><circle cx="6" cy="7" r="2"/><path d="M16 11h2a3 3 0 0 1 3 3v2h2v-2a5 5 0 0 0-5-5h-2Z"/><path d="M22 18h-4"/><path d="M17 22v-4"/></svg>
                                 </div>
-                                <div class="mt-auto">
-                                    <h4 class="fw-bold text-dark mb-4" style="font-size: 1.6rem; letter-spacing: -0.5px;">Büyükbaş</h4>
-                                    <div class="btn rounded-pill px-2 py-2 w-100 text-muted fw-bold" style="font-size: 0.75rem; background-color: #f4f5f7; letter-spacing: 0.5px;">SEÇMEK İÇİN TIKLA</div>
-                                </div>
+                                <span class="fw-bold fs-5 mb-1">Büyükbaş</span>
+                                <small class="text-muted">Dana / Düve / İnek</small>
                             </label>
                         </div>
-                        <div class="col-6 col-md-5 mb-3">
-                            <label class="wizard-card bg-white p-3 p-md-5 border-0 rounded-4 w-100 text-center cursor-pointer ${wizardData.type === 'Küçükbaş' ? 'border-2 border-secondary' : ''}" style="min-height: 400px; display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.3s ease;">
+                        <div class="col-12 col-sm-6">
+                            <label class="wizard-card p-4 border rounded-4 text-center w-100 h-100 d-flex flex-column align-items-center justify-content-center cursor-pointer ${wizardData.type === 'Küçükbaş' ? 'border-success bg-emerald-light' : ''}">
                                 <input type="radio" name="w_type" value="Küçükbaş" class="d-none" ${wizardData.type === 'Küçükbaş' ? 'checked' : ''}>
-                                <div class="my-auto">
-                                    <img src="assets/kucukbas.png?v=7" alt="Küçükbaş" class="img-fluid" style="max-height: 170px; object-fit: contain;">
+                                <div class="icon-circle mb-3 ${wizardData.type === 'Küçükbaş' ? 'bg-emerald text-white' : 'bg-light text-emerald'}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16v-4a8 8 0 1 0-16 0v4"/><rect x="2" y="16" width="20" height="4" rx="2"/><path d="M6 20v2"/><path d="M18 20v2"/></svg>
                                 </div>
-                                <div class="mt-auto">
-                                    <h4 class="fw-bold text-dark mb-4" style="font-size: 1.6rem; letter-spacing: -0.5px;">Küçükbaş</h4>
-                                    <div class="btn rounded-pill px-2 py-2 w-100 text-muted fw-bold" style="font-size: 0.75rem; background-color: #f4f5f7; letter-spacing: 0.5px;">SEÇMEK İÇİN TIKLA</div>
-                                </div>
+                                <span class="fw-bold fs-5 mb-1">Küçükbaş</span>
+                                <small class="text-muted">Koyun / Koç / Keçi</small>
                             </label>
                         </div>
                     </div>`;

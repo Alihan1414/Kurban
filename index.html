@@ -14,6 +14,10 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="style.css?v=3">
+    <script>
+        // Sayfa yüklendiğinde JavaScript'in çalıştığını CSS'e bildirir
+        document.documentElement.classList.add('js-ready');
+    </script>
 </head>
 <body>
     <!-- Navbar -->
@@ -47,10 +51,10 @@
     <!-- Bootstrap Mobile Offcanvas Menu -->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
         <div class="offcanvas-header border-bottom">
-            <div class="d-flex align-items-center gap-2">
+            <a href="#hero" class="d-flex align-items-center gap-2 text-decoration-none" data-bs-dismiss="offcanvas">
                 <img src="assets/logo2.jpg" alt="Logo" class="custom-logo" style="width: 40px; height: 40px;">
                 <h5 class="offcanvas-title fw-bold text-success mb-0" id="mobileMenuLabel">Çınardere Kurban</h5>
-            </div>
+            </a>
             <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
@@ -376,13 +380,13 @@
         <div class="container">
             <div class="row g-5 mb-5 border-bottom border-secondary pb-5 text-center text-md-start">
                 <div class="col-md-6">
-                    <div class="footer-logo d-flex align-items-center justify-content-center justify-content-md-start gap-3 mb-4">
+                    <a href="#hero" class="footer-logo d-flex align-items-center justify-content-center justify-content-md-start gap-3 mb-4 text-decoration-none text-white">
                         <img src="assets/logo2.jpg" alt="Logo" class="custom-logo" style="width: 80px; height: 80px;">
                         <div>
                             <span class="h4 fw-bold d-block mb-0">Çınardere Kurban</span>
                             <span class="small opacity-50">Erenler 2012'den beri</span>
                         </div>
-                    </div>
+                    </a>
                     <p class="opacity-75 pe-lg-5">İslami hassasiyetlere ve hijyen kurallarına en üst düzeyde bağlı kalarak, her yıl binlerce ailemize güvenle kurban hizmeti sunuyoruz.</p>
                 </div>
                 <div class="col-md-3">

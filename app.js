@@ -127,9 +127,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 html = `<h4 class="h5 fw-bold mb-4 text-center">Hisse Paketi Seçiniz</h4><div class="row g-3">`;
                 const packages = wizardData.type === 'Büyükbaş'
                     ? [
-                        { val: '28.000 TL - 36.000 TL', label: '1. GÜRÜP', desc: 'Süt Danası / Düve' },
-                        { val: '36.000 TL - 42.000 TL', label: '2. GÜRÜP', desc: 'Premium Dana', popular: true },
-                        { val: '42.000 TL +', label: '3. GÜRÜP', desc: 'Özel Lüks Dana' }
+                        { val: '28.000 TL - 36.000 TL', label: '1. GRUP', desc: '28.000TL - 36.000TL Arası' },
+                        { val: '36.000 TL - 42.000 TL', label: '2. GRUP', desc: '36.000TL - 42.000TL Arası', popular: true },
+                        { val: '42.000 TL & Üzeri', label: '3. GRUP', desc: '42.000TL & Üzeri' }
                     ]
                     : [
                         { val: 'Standart (14.500 TL)', label: 'Koç / Koyun', desc: '20-25 KG Ortalama' },
@@ -138,11 +138,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 packages.forEach(pkg => {
                     html += `
                         <div class="col-12">
-                            <label class="wizard-card p-3 border rounded-4 w-100 d-flex align-items-center justify-content-between cursor-pointer ${wizardData.package === pkg.val ? 'border-primary bg-emerald-light' : ''}">
+                            <label class="wizard-card p-3 border rounded-4 w-100 d-flex align-items-center justify-content-between cursor-pointer ${wizardData.package === pkg.val ? 'border-success bg-emerald-light' : ''}">
                                 <div class="d-flex align-items-center gap-3">
                                     <input type="radio" name="w_package" value="${pkg.val}" class="form-check-input ms-0" ${wizardData.package === pkg.val ? 'checked' : ''}>
                                     <div>
-                                        <div class="fw-bold">${pkg.label} ${pkg.popular ? '<span class="badge bg-warning text-dark ms-2 small">Popüler</span>' : ''}</div>
+                                        <div class="fw-bold fs-5">${pkg.label} ${pkg.popular ? '<span class="badge bg-warning text-dark ms-2 small">Çok Tercih Edilen</span>' : ''}</div>
                                         <div class="small text-muted">${pkg.desc}</div>
                                     </div>
                                 </div>

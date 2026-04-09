@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <label class="wizard-card bg-white p-4 p-md-5 border rounded-4 w-100 h-100 d-flex flex-column align-items-center cursor-pointer position-relative ${wizardData.type === 'Büyükbaş' ? 'border-secondary shadow' : 'border-light shadow-sm'}" style="min-height: 380px;">
                                 <input type="radio" name="w_type" value="Büyükbaş" class="d-none" ${wizardData.type === 'Büyükbaş' ? 'checked' : ''}>
                                 <span class="badge text-white position-absolute top-0 start-50 translate-middle px-3 py-2 rounded-pill fw-bold small shadow-sm" style="background-color: #ff7600;">ÇOK TERCİH EDİLEN</span>
-                                <img src="assets/buyukbas.png" alt="Büyükbaş" class="wizard-animal-img my-auto" style="max-height: 180px; object-fit: contain;">
+                                <img src="assets/buyukbas.png?v=3" alt="Büyükbaş" class="wizard-animal-img my-auto" style="max-height: 180px; object-fit: contain;">
                                 <div class="mt-auto w-100">
                                     <h4 class="fw-bold fs-3 text-dark mb-4">Büyükbaş</h4>
                                     <span class="btn btn-light rounded-pill px-4 text-muted fw-bold tracking-wider" style="font-size: 0.8rem; letter-spacing: 1px; background-color: #f6f7f9;">SEÇMEK İÇİN TIKLA</span>
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="col-12 col-sm-6 text-center">
                             <label class="wizard-card bg-white p-4 p-md-5 border rounded-4 w-100 h-100 d-flex flex-column align-items-center cursor-pointer ${wizardData.type === 'Küçükbaş' ? 'border-secondary shadow' : 'border-light shadow-sm'}" style="min-height: 380px;">
                                 <input type="radio" name="w_type" value="Küçükbaş" class="d-none" ${wizardData.type === 'Küçükbaş' ? 'checked' : ''}>
-                                <img src="assets/kucukbas.png" alt="Küçükbaş" class="wizard-animal-img my-auto" style="max-height: 180px; object-fit: contain;">
+                                <img src="assets/kucukbas.png?v=3" alt="Küçükbaş" class="wizard-animal-img my-auto" style="max-height: 180px; object-fit: contain;">
                                 <div class="mt-auto w-100">
                                     <h4 class="fw-bold fs-3 text-dark mb-4">Küçükbaş</h4>
                                     <span class="btn btn-light rounded-pill px-4 text-muted fw-bold tracking-wider" style="font-size: 0.8rem; letter-spacing: 1px; background-color: #f6f7f9;">SEÇMEK İÇİN TIKLA</span>

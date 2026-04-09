@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5. Kurban Selection Wizard (Inline)
     let currentStep = 1;
     const totalSteps = 5;
-    
+
     const progressBar = document.getElementById('inline-progress-bar');
     const stepText = document.getElementById('inline-current-step');
     const stepName = document.getElementById('inline-step-name');
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const stepTitles = ["Hisse Türü", "Paket Seçimi", "Hisse Sahibi", "Teslimat", "Hayırlı Olsun"];
 
     function initWizard() {
-        if(!stepsContainer) return;
+        if (!stepsContainer) return;
         currentStep = 1;
         wizardData = { type: '', package: '', name: '', phone: '', delivery: '' };
         updateWizardUI();
@@ -92,44 +92,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderStep() {
         let html = '';
-        switch(currentStep) {
+        switch (currentStep) {
             case 1:
                 html = `
-                    <div class="row g-3 justify-content-center">
-                        <div class="col-12 col-md-6 mb-3">
-                            <label class="bg-white p-4 border rounded-4 w-100 text-center cursor-pointer position-relative ${wizardData.type === 'Büyükbaş' ? 'border-secondary shadow' : 'border-light shadow-sm'}" style="transition: all 0.3s; cursor:pointer;">
+                    <div class="row g-4 justify-content-center px-lg-3">
+                        <div class="col-6 col-md-5 mb-3">
+                            <label class="wizard-card bg-white p-3 p-md-5 border-0 rounded-4 w-100 text-center cursor-pointer position-relative ${wizardData.type === 'Büyükbaş' ? 'border-2 border-secondary' : ''}" style="min-height: 400px; display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.3s ease;">
                                 <input type="radio" name="w_type" value="Büyükbaş" class="d-none" ${wizardData.type === 'Büyükbaş' ? 'checked' : ''}>
-                                <span class="badge text-white position-absolute top-0 start-50 translate-middle px-3 py-1 rounded-pill fw-bold" style="background-color: #ff7600; font-size: 0.75rem;">ÇOK TERCİH EDİLEN</span>
-                                <div class="py-3">
-                                    <img src="assets/buyukbas.png?v=4" alt="Büyükbaş" class="img-fluid mb-3" style="max-height: 180px; object-fit: contain;">
+                                <span class="badge text-white position-absolute top-0 start-50 translate-middle px-3 py-2 rounded-pill fw-bold" style="background-color: #ff6a00; font-size: 0.65rem; border: 2px solid white;">ÇOK TERCİH EDİLEN</span>
+                                <div class="my-auto">
+                                    <img src="assets/buyukbas.png?v=7" alt="Büyükbaş" class="img-fluid" style="max-height: 170px; object-fit: contain;">
                                 </div>
-                                <h4 class="fw-bold fs-4 text-dark mb-3">Büyükbaş</h4>
-                                <div class="btn btn-light rounded-pill px-4 py-2 w-100 text-secondary fw-bold" style="font-size: 0.85rem; background-color: #f4f5f7;">SEÇMEK İÇİN TIKLA</div>
+                                <div class="mt-auto">
+                                    <h4 class="fw-bold text-dark mb-4" style="font-size: 1.6rem; letter-spacing: -0.5px;">Büyükbaş</h4>
+                                    <div class="btn rounded-pill px-2 py-2 w-100 text-muted fw-bold" style="font-size: 0.75rem; background-color: #f4f5f7; letter-spacing: 0.5px;">SEÇMEK İÇİN TIKLA</div>
+                                </div>
                             </label>
                         </div>
-                        <div class="col-12 col-md-6 mb-3">
-                            <label class="bg-white p-4 border rounded-4 w-100 text-center cursor-pointer ${wizardData.type === 'Küçükbaş' ? 'border-secondary shadow' : 'border-light shadow-sm'}" style="transition: all 0.3s; cursor:pointer;">
+                        <div class="col-6 col-md-5 mb-3">
+                            <label class="wizard-card bg-white p-3 p-md-5 border-0 rounded-4 w-100 text-center cursor-pointer ${wizardData.type === 'Küçükbaş' ? 'border-2 border-secondary' : ''}" style="min-height: 400px; display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.3s ease;">
                                 <input type="radio" name="w_type" value="Küçükbaş" class="d-none" ${wizardData.type === 'Küçükbaş' ? 'checked' : ''}>
-                                <div class="py-3">
-                                    <img src="assets/kucukbas.png?v=4" alt="Küçükbaş" class="img-fluid mb-3" style="max-height: 180px; object-fit: contain;">
+                                <div class="my-auto">
+                                    <img src="assets/kucukbas.png?v=7" alt="Küçükbaş" class="img-fluid" style="max-height: 170px; object-fit: contain;">
                                 </div>
-                                <h4 class="fw-bold fs-4 text-dark mb-3">Küçükbaş</h4>
-                                <div class="btn btn-light rounded-pill px-4 py-2 w-100 text-secondary fw-bold" style="font-size: 0.85rem; background-color: #f4f5f7;">SEÇMEK İÇİN TIKLA</div>
+                                <div class="mt-auto">
+                                    <h4 class="fw-bold text-dark mb-4" style="font-size: 1.6rem; letter-spacing: -0.5px;">Küçükbaş</h4>
+                                    <div class="btn rounded-pill px-2 py-2 w-100 text-muted fw-bold" style="font-size: 0.75rem; background-color: #f4f5f7; letter-spacing: 0.5px;">SEÇMEK İÇİN TIKLA</div>
+                                </div>
                             </label>
                         </div>
                     </div>`;
                 break;
             case 2:
                 html = `<h4 class="h5 fw-bold mb-4 text-center">Hisse Paketi Seçiniz</h4><div class="row g-3">`;
-                const packages = wizardData.type === 'Büyükbaş' 
+                const packages = wizardData.type === 'Büyükbaş'
                     ? [
-                        {val: '28.000 TL - 36.000 TL', label: '1. GÜRÜP', desc: 'Süt Danası / Düve'},
-                        {val: '36.000 TL - 42.000 TL', label: '2. GÜRÜP', desc: 'Premium Dana', popular: true},
-                        {val: '42.000 TL +', label: '3. GÜRÜP', desc: 'Özel Lüks Dana'}
+                        { val: '28.000 TL - 36.000 TL', label: '1. GÜRÜP', desc: 'Süt Danası / Düve' },
+                        { val: '36.000 TL - 42.000 TL', label: '2. GÜRÜP', desc: 'Premium Dana', popular: true },
+                        { val: '42.000 TL +', label: '3. GÜRÜP', desc: 'Özel Lüks Dana' }
                     ]
                     : [
-                        {val: 'Standart (14.500 TL)', label: 'Koç / Koyun', desc: '20-25 KG Ortalama'},
-                        {val: 'Lüks (17.000 TL)', label: 'Besi Koç', desc: '28-32 KG Ortalama'}
+                        { val: 'Standart (14.500 TL)', label: 'Koç / Koyun', desc: '20-25 KG Ortalama' },
+                        { val: 'Lüks (17.000 TL)', label: 'Besi Koç', desc: '28-32 KG Ortalama' }
                     ];
                 packages.forEach(pkg => {
                     html += `
@@ -212,41 +216,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Next Button Events
-    if(nextBtn) {
+    if (nextBtn) {
         nextBtn.addEventListener('click', (e) => {
             e.preventDefault();
             if (currentStep < totalSteps) {
                 // Save data from inputs
                 if (currentStep === 1) {
                     const checkedType = document.querySelector('input[name="w_type"]:checked');
-                    if(!checkedType) return alert('Lütfen seçim yapınız');
+                    if (!checkedType) return alert('Lütfen seçim yapınız');
                     wizardData.type = checkedType.value;
                 } else if (currentStep === 2) {
                     const checkedPkg = document.querySelector('input[name="w_package"]:checked');
-                    if(!checkedPkg) return alert('Lütfen paket seçiniz');
+                    if (!checkedPkg) return alert('Lütfen paket seçiniz');
                     wizardData.package = checkedPkg.value;
                 } else if (currentStep === 3) {
                     const nameInp = document.getElementById('w_name');
                     const phoneInp = document.getElementById('w_phone');
-                    if(!nameInp.value || !phoneInp.value) return alert('Lütfen bilgileri doldurun');
+                    if (!nameInp.value || !phoneInp.value) return alert('Lütfen bilgileri doldurun');
                     wizardData.name = nameInp.value;
                     wizardData.phone = phoneInp.value;
                 } else if (currentStep === 4) {
                     const checkedDel = document.querySelector('input[name="w_delivery"]:checked');
-                    if(!checkedDel) return alert('Lütfen teslimat seçiniz');
+                    if (!checkedDel) return alert('Lütfen teslimat seçiniz');
                     wizardData.delivery = checkedDel.value;
                 }
                 currentStep++;
                 updateWizardUI();
             } else {
                 // Finalize
-                if(!document.getElementById('kvkk_check').checked) return alert('Lütfen onayı işaretleyiniz');
+                if (!document.getElementById('kvkk_check').checked) return alert('Lütfen onayı işaretleyiniz');
                 sendWhatsApp();
             }
         });
     }
 
-    if(prevBtn) {
+    if (prevBtn) {
         prevBtn.addEventListener('click', (e) => {
             e.preventDefault();
             if (currentStep > 1) {
@@ -267,9 +271,9 @@ document.addEventListener('DOMContentLoaded', () => {
 %0A🔹 *Teslimat:* ${wizardData.delivery}
 %0A━━━━━━━━━━━━━━━━━━
 %0A_Allah hayırlı kurbanlar nasip eylesin._`;
-        
+
         window.open(`https://wa.me/905072574034?text=${text}`, '_blank');
-        
+
         // Reset after send
         setTimeout(() => {
             initWizard();
@@ -281,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Contact Form Action
     const contactForm = document.getElementById('contact-form');
-    if(contactForm) {
+    if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const name = document.getElementById('c_name').value;

@@ -321,3 +321,27 @@ h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
 .row { margin-left: 0; margin-right: 0; }
 .col, [class*="col-"] { padding-left: 10px; padding-right: 10px; }
 
+/* Pricing Cards */
+.price-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.price-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15) !important;
+}
+
+/* Big Emerald CTA Button */
+.btn-emerald-lg {
+    background-color: var(--emerald);
+    color: white;
+    border: none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+.btn-emerald-lg:hover {
+    background-color: var(--emerald-dark);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(27, 122, 61, 0.4);
+}

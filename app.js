@@ -43,17 +43,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 5. Kurban Selection Wizard (Bootstrap Modal Based)
+    // 5. Kurban Selection Wizard (Inline)
     let currentStep = 1;
     const totalSteps = 5;
-    const wizardModalEl = document.getElementById('wizardModal');
-    const wizardModal = new bootstrap.Modal(wizardModalEl);
-    const progressBar = document.getElementById('progress-bar');
-    const stepText = document.getElementById('current-step');
-    const stepName = document.getElementById('step-name');
-    const stepsContainer = document.getElementById('wizard-steps-container');
-    const nextBtn = document.getElementById('w-next-btn');
-    const prevBtn = document.getElementById('w-prev-btn');
+    
+    const progressBar = document.getElementById('inline-progress-bar');
+    const stepText = document.getElementById('inline-current-step');
+    const stepName = document.getElementById('inline-step-name');
+    const stepsContainer = document.getElementById('inline-wizard-steps-container');
+    const nextBtn = document.getElementById('inline-w-next-btn');
+    const prevBtn = document.getElementById('inline-w-prev-btn');
 
     let wizardData = {
         type: '',
@@ -65,15 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const stepTitles = ["Hisse Türü", "Paket Seçimi", "Hisse Sahibi", "Teslimat", "Hayırlı Olsun"];
 
-    // Initialize/Open Wizard
-    document.querySelectorAll('.open-wizard-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            resetWizard();
-            wizardModal.show();
-        });
-    });
-
-    function resetWizard() {
+    function initWizard() {
+        if(!stepsContainer) return;
         currentStep = 1;
         wizardData = { type: '', package: '', name: '', phone: '', delivery: '' };
         updateWizardUI();
@@ -88,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Update Buttons
         prevBtn.classList.toggle('d-none', currentStep === 1);
-        nextBtn.innerText = currentStep === totalSteps ? 'WHATSAPP İLE BİTİR' : 'İleri';
+        nextBtn.innerText = currentStep === totalSteps ? 'WHATSAPP İLE GÖNDER' : 'İleri';
         if (currentStep === totalSteps) {
             nextBtn.classList.replace('btn-emerald', 'btn-success');
         } else {
@@ -125,9 +117,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 html = `<h4 class="h5 fw-bold mb-4 text-center">Hisse Paketi Seçiniz</h4><div class="row g-3">`;
                 const packages = wizardData.type === 'Büyükbaş' 
                     ? [
-                        {val: '28.000 TL - 36.000 TL', label: '1. GRUP', desc: 'Süt Danası / Düve'},
-                        {val: '36.000 TL - 42.000 TL', label: '2. GRUP', desc: 'Premium Dana', popular: true},
-                        {val: '42.000 TL +', label: '3. GRUP', desc: 'Özel Lüks Dana'}
+                        {val: '28.000 TL - 36.000 TL', label: '1. GÜRÜP', desc: 'Süt Danası / Düve'},
+                        {val: '36.000 TL - 42.000 TL', label: '2. GÜRÜP', desc: 'Premium Dana', popular: true},
+                        {val: '42.000 TL +', label: '3. GÜRÜP', desc: 'Özel Lüks Dana'}
                     ]
                     : [
                         {val: 'Standart (14.500 TL)', label: 'Koç / Koyun', desc: '20-25 KG Ortalama'},
@@ -213,44 +205,50 @@ document.addEventListener('DOMContentLoaded', () => {
         lucide.createIcons();
     }
 
-    // Modal Events
-    nextBtn.addEventListener('click', () => {
-        if (currentStep < totalSteps) {
-            // Save data from inputs
-            if (currentStep === 1) {
-                const checkedType = document.querySelector('input[name="w_type"]:checked');
-                if(!checkedType) return alert('Lütfen seçim yapınız');
-                wizardData.type = checkedType.value;
-            } else if (currentStep === 2) {
-                const checkedPkg = document.querySelector('input[name="w_package"]:checked');
-                if(!checkedPkg) return alert('Lütfen paket seçiniz');
-                wizardData.package = checkedPkg.value;
-            } else if (currentStep === 3) {
-                const nameInp = document.getElementById('w_name');
-                const phoneInp = document.getElementById('w_phone');
-                if(!nameInp.value || !phoneInp.value) return alert('Lütfen bilgileri doldurun');
-                wizardData.name = nameInp.value;
-                wizardData.phone = phoneInp.value;
-            } else if (currentStep === 4) {
-                const checkedDel = document.querySelector('input[name="w_delivery"]:checked');
-                if(!checkedDel) return alert('Lütfen teslimat seçiniz');
-                wizardData.delivery = checkedDel.value;
+    // Next Button Events
+    if(nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentStep < totalSteps) {
+                // Save data from inputs
+                if (currentStep === 1) {
+                    const checkedType = document.querySelector('input[name="w_type"]:checked');
+                    if(!checkedType) return alert('Lütfen seçim yapınız');
+                    wizardData.type = checkedType.value;
+                } else if (currentStep === 2) {
+                    const checkedPkg = document.querySelector('input[name="w_package"]:checked');
+                    if(!checkedPkg) return alert('Lütfen paket seçiniz');
+                    wizardData.package = checkedPkg.value;
+                } else if (currentStep === 3) {
+                    const nameInp = document.getElementById('w_name');
+                    const phoneInp = document.getElementById('w_phone');
+                    if(!nameInp.value || !phoneInp.value) return alert('Lütfen bilgileri doldurun');
+                    wizardData.name = nameInp.value;
+                    wizardData.phone = phoneInp.value;
+                } else if (currentStep === 4) {
+                    const checkedDel = document.querySelector('input[name="w_delivery"]:checked');
+                    if(!checkedDel) return alert('Lütfen teslimat seçiniz');
+                    wizardData.delivery = checkedDel.value;
+                }
+                currentStep++;
+                updateWizardUI();
+            } else {
+                // Finalize
+                if(!document.getElementById('kvkk_check').checked) return alert('Lütfen onayı işaretleyiniz');
+                sendWhatsApp();
             }
-            currentStep++;
-            updateWizardUI();
-        } else {
-            // Finalize
-            if(!document.getElementById('kvkk_check').checked) return alert('Lütfen onayı işaretleyiniz');
-            sendWhatsApp();
-        }
-    });
+        });
+    }
 
-    prevBtn.addEventListener('click', () => {
-        if (currentStep > 1) {
-            currentStep--;
-            updateWizardUI();
-        }
-    });
+    if(prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentStep > 1) {
+                currentStep--;
+                updateWizardUI();
+            }
+        });
+    }
 
     function sendWhatsApp() {
         const text = `Selamün Aleyküm, ÇınarDere Kurban için kayıt yaptırmak istiyorum.
@@ -265,8 +263,15 @@ document.addEventListener('DOMContentLoaded', () => {
 %0A_Allah hayırlı kurbanlar nasip eylesin._`;
         
         window.open(`https://wa.me/905072574034?text=${text}`, '_blank');
-        wizardModal.hide();
+        
+        // Reset after send
+        setTimeout(() => {
+            initWizard();
+        }, 1000);
     }
+
+    // Start inline wizard
+    initWizard();
 
     // Contact Form Action
     const contactForm = document.getElementById('contact-form');

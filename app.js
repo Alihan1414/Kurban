@@ -121,9 +121,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="col-6">
                             <label class="wizard-card p-4 p-md-5 border rounded-4 text-center w-100 h-100 d-flex flex-column align-items-center justify-content-center cursor-pointer ${wizardData.type === 'Büyükbaş' ? 'border-success shadow' : ''}" style="min-height: 200px;">
                                 <input type="radio" name="w_type" value="Büyükbaş" class="d-none" ${wizardData.type === 'Büyükbaş' ? 'checked' : ''}>
-                                <div class="display-1 mb-3">🐄</div>
+                                <div class="display-1 mb-3">🐂</div>
                                 <span class="fw-bold fs-5">Büyükbaş</span>
-                                <small class="text-muted mt-1">Dana / Düve / İnek</small>
+                                <small class="text-muted mt-1">Dana</small>
                             </label>
                         </div>
                         <div class="col-6">
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <input type="radio" name="w_type" value="Küçükbaş" class="d-none" ${wizardData.type === 'Küçükbaş' ? 'checked' : ''}>
                                 <div class="display-1 mb-3">🐑</div>
                                 <span class="fw-bold fs-5">Küçükbaş</span>
-                                <small class="text-muted mt-1">Koyun / Koç / Keçi</small>
+                                <small class="text-muted mt-1">Koç</small>
                             </label>
                         </div>
                     </div>`;
@@ -193,7 +193,14 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <small class="text-muted mt-1">Kesim yerinden alırsınız</small>
                             </label>
                         </div>
-                    </div>`;
+                    </div>
+                    ${wizardData.delivery === 'Şubeden Teslim' ? `
+                    <div class="mt-4">
+                        <a href="https://maps.app.goo.gl/aAKQMa1HKVDTvkWk6?g_st=iw" target="_blank" class="btn btn-outline-success rounded-pill w-100 py-3 d-flex align-items-center justify-content-center gap-2 fw-bold">
+                            <span class="fs-4">📍</span> Şube Konumunu Haritada Gör
+                        </a>
+                    </div>` : ''}
+                `;
                 break;
 
             // ───────── ADIM 4: Kişisel Bilgiler ─────────

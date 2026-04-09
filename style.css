@@ -20,11 +20,18 @@
 }
 
 /* Base Reset & Core Styles */
+html {
+    scroll-behavior: smooth;
+}
+
+section {
+    scroll-margin-top: 100px; /* Sabit navbar için tüm sectionlarda pay */
+}
+
 html, body {
     overflow-x: hidden;
     width: 100%;
     position: relative;
-    scroll-behavior: smooth;
 }
 
 body {
@@ -299,11 +306,11 @@ h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
 
 /* Custom logo scaling */
 .custom-logo {
-    width: 45px;
-    height: 45px;
-    object-fit: cover;
+    width: 65px;
+    height: 65px;
+    object-fit: contain; /* object-fit cover yerine contain daha iyi olabilir detaylar için */
     border-radius: 50%;
-    border: 2px solid var(--emerald);
+    border: 1px solid rgba(27, 122, 61, 0.2);
     transition: transform 0.3s;
 }
 .custom-logo:hover {

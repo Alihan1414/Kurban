@@ -95,20 +95,26 @@ document.addEventListener('DOMContentLoaded', () => {
         switch(currentStep) {
             case 1:
                 html = `
-                    <h4 class="h5 fw-bold mb-4 text-center">Yatırılacak Hisse Türünü Seçiniz</h4>
-                    <div class="row g-3">
-                        <div class="col-sm-6">
-                            <label class="wizard-card p-4 border rounded-4 text-center w-100 h-100 d-flex flex-column align-items-center justify-content-center cursor-pointer ${wizardData.type === 'Büyükbaş' ? 'border-primary bg-emerald-light' : ''}">
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-12 col-sm-6 text-center">
+                            <label class="wizard-card bg-white p-4 p-md-5 border rounded-4 w-100 h-100 d-flex flex-column align-items-center cursor-pointer position-relative ${wizardData.type === 'Büyükbaş' ? 'border-secondary shadow' : 'border-light shadow-sm'}" style="min-height: 380px;">
                                 <input type="radio" name="w_type" value="Büyükbaş" class="d-none" ${wizardData.type === 'Büyükbaş' ? 'checked' : ''}>
-                                <div class="icon-circle mb-3 ${wizardData.type === 'Büyükbaş' ? 'bg-emerald text-white' : 'bg-light text-emerald'}"><i data-lucide="cow"></i></div>
-                                <span class="fw-bold fs-5">Büyükbaş</span>
+                                <span class="badge text-white position-absolute top-0 start-50 translate-middle px-3 py-2 rounded-pill fw-bold small shadow-sm" style="background-color: #ff7600;">ÇOK TERCİH EDİLEN</span>
+                                <img src="assets/buyukbas.png" alt="Büyükbaş" class="wizard-animal-img my-auto" style="max-height: 180px; object-fit: contain;">
+                                <div class="mt-auto w-100">
+                                    <h4 class="fw-bold fs-3 text-dark mb-4">Büyükbaş</h4>
+                                    <span class="btn btn-light rounded-pill px-4 text-muted fw-bold tracking-wider" style="font-size: 0.8rem; letter-spacing: 1px; background-color: #f6f7f9;">SEÇMEK İÇİN TIKLA</span>
+                                </div>
                             </label>
                         </div>
-                        <div class="col-sm-6">
-                            <label class="wizard-card p-4 border rounded-4 text-center w-100 h-100 d-flex flex-column align-items-center justify-content-center cursor-pointer ${wizardData.type === 'Küçükbaş' ? 'border-primary bg-emerald-light' : ''}">
+                        <div class="col-12 col-sm-6 text-center">
+                            <label class="wizard-card bg-white p-4 p-md-5 border rounded-4 w-100 h-100 d-flex flex-column align-items-center cursor-pointer ${wizardData.type === 'Küçükbaş' ? 'border-secondary shadow' : 'border-light shadow-sm'}" style="min-height: 380px;">
                                 <input type="radio" name="w_type" value="Küçükbaş" class="d-none" ${wizardData.type === 'Küçükbaş' ? 'checked' : ''}>
-                                <div class="icon-circle mb-3 ${wizardData.type === 'Küçükbaş' ? 'bg-emerald text-white' : 'bg-light text-emerald'}"><i data-lucide="rabbit"></i></div>
-                                <span class="fw-bold fs-5">Küçükbaş</span>
+                                <img src="assets/kucukbas.png" alt="Küçükbaş" class="wizard-animal-img my-auto" style="max-height: 180px; object-fit: contain;">
+                                <div class="mt-auto w-100">
+                                    <h4 class="fw-bold fs-3 text-dark mb-4">Küçükbaş</h4>
+                                    <span class="btn btn-light rounded-pill px-4 text-muted fw-bold tracking-wider" style="font-size: 0.8rem; letter-spacing: 1px; background-color: #f6f7f9;">SEÇMEK İÇİN TIKLA</span>
+                                </div>
                             </label>
                         </div>
                     </div>`;

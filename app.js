@@ -1,6 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Initialize Lucide Icons
-    lucide.createIcons();
+    // 1. Initialize Lucide Icons (Wrapped to prevent global failure)
+    try {
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+    } catch (e) { 
+        console.warn("Lucide icons could not be initialized:", e); 
+    }
 
     // 2. Navbar Scroll Effect
     const navbar = document.getElementById('navbar');
@@ -23,7 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     };
-    revealOnScroll(); // Trigger on load
+    // Initial reveal trigger
+    setTimeout(revealOnScroll, 100); 
     window.addEventListener('scroll', revealOnScroll);
 
     // 4. Smooth Scroll for Anchor Links

@@ -20,13 +20,13 @@
     <nav id="navbar" class="navbar navbar-expand-lg fixed-top shadow-sm transition">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#hero">
-                <img src="assets/logo.png" alt="Çınardere Kurban Logo" class="custom-logo me-2">
+                <img src="assets/logo2.jpg" alt="Çınardere Kurban Logo" class="custom-logo me-2">
                 <div class="logo-text">
                     <span class="main-brand d-block h5 mb-0 fw-bold">Çınardere Kurban</span>
                     <span class="sub-brand d-block small">Erenler 2012</span>
                 </div>
             </a>
-
+            
             <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu">
                 <i data-lucide="menu"></i>
             </button>
@@ -37,6 +37,7 @@
                     <li class="nav-item"><a class="nav-link px-3" href="#services">Neden Biz?</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="#process">Hizmet Süreci</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="#pricing">2026 Hisseler</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#wizard">Kayıt Formu</a></li>
                     <li class="nav-item ms-lg-3"><a href="#contact" class="btn btn-emerald px-4 rounded-pill text-white fw-bold">İletişim</a></li>
                 </ul>
             </div>
@@ -46,7 +47,10 @@
     <!-- Bootstrap Mobile Offcanvas Menu -->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
         <div class="offcanvas-header border-bottom">
-            <h5 class="offcanvas-title fw-bold text-success" id="mobileMenuLabel">Çınardere Kurban</h5>
+            <div class="d-flex align-items-center gap-2">
+                <img src="assets/logo2.jpg" alt="Logo" class="custom-logo" style="width: 40px; height: 40px;">
+                <h5 class="offcanvas-title fw-bold text-success mb-0" id="mobileMenuLabel">Çınardere Kurban</h5>
+            </div>
             <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
@@ -55,6 +59,7 @@
                 <li class="nav-item"><a class="nav-link fs-5 fw-semibold" href="#services" data-bs-dismiss="offcanvas">Neden Biz?</a></li>
                 <li class="nav-item"><a class="nav-link fs-5 fw-semibold" href="#process" data-bs-dismiss="offcanvas">Hizmet Süreci</a></li>
                 <li class="nav-item"><a class="nav-link fs-5 fw-semibold" href="#pricing" data-bs-dismiss="offcanvas">2026 Hisseler</a></li>
+                <li class="nav-item"><a class="nav-link fs-5 fw-semibold" href="#wizard" data-bs-dismiss="offcanvas">Kayıt Formu</a></li>
                 <li class="nav-item"><a class="nav-link fs-5 fw-semibold" href="#contact" data-bs-dismiss="offcanvas">İletişim</a></li>
             </ul>
             <div class="border-top pt-4 mt-auto">
@@ -205,7 +210,7 @@
                 <h2 class="display-4 fw-bold color-emerald">2026 KURBAN</h2>
                 <h3 class="h2 fw-bold text-dark mt-2 mb-4" style="color: #b78a3f !important;">HİSSE KAYITLARIMIZ BAŞLAMIŞTIR</h3>
             </div>
-
+            
             <div class="row g-4 justify-content-center mb-4">
                 <!-- 1. GRUP -->
                 <div class="col-md-5 col-lg-4 reveal">
@@ -224,7 +229,7 @@
                     </div>
                 </div>
             </div>
-
+            
             <div class="row justify-content-center mb-5 pb-4">
                 <!-- 3. GRUP -->
                 <div class="col-md-6 col-lg-5 reveal delay-2">
@@ -255,9 +260,9 @@
                     <p class="fw-bold small text-dark mb-0">1.GÜN<br>TESLİM</p>
                 </div>
             </div>
-
+            
             <div class="text-center mt-5 pt-3 reveal delay-4">
-                <a href="#wizard" class="btn btn-emerald-lg btn-lg px-5 rounded-pill shadow fw-bold">HİSSE AL</a>
+               <a href="#wizard" class="btn btn-emerald-lg btn-lg px-5 rounded-pill shadow fw-bold">HİSSE AL</a>
             </div>
         </div>
     </section>
@@ -316,13 +321,13 @@
                         <div class="progress mb-4 bg-light rounded-pill" style="height: 4px;">
                             <div id="inline-progress-bar" class="progress-bar rounded-pill" role="progressbar" style="width: 14%; background-color: #ff6b00;"></div>
                         </div>
-
+                        
                         <form id="inline-wizard-form" class="mt-4">
                             <div id="inline-wizard-steps-container">
                                 <!-- Steps will be injected by JS -->
                             </div>
                         </form>
-
+                        
                         <div class="d-flex justify-content-between mt-5 border-top pt-4">
                             <button id="inline-w-prev-btn" class="btn btn-outline-secondary px-4 px-md-5 py-2 rounded-pill d-none">Geri</button>
                             <button id="inline-w-next-btn" class="btn btn-emerald px-4 px-md-5 py-2 rounded-pill fw-bold ms-auto">İleri <i data-lucide="chevron-right" class="ms-1"></i></button>
@@ -340,7 +345,7 @@
                 <div class="col-lg-8 mx-auto text-center reveal">
                     <h2 class="display-4 fw-bold mb-4 color-emerald">Bize Ulaşın</h2>
                     <p class="text-muted mb-5 lead">Kayıt oluşturmak veya sorularınız için bizi doğrudan arayabilir ya da ofisimizde ziyaret edebilirsiniz.</p>
-
+                    
                     <div class="row g-4 justify-content-center">
                         <div class="col-md-6">
                             <div class="info-card d-flex flex-column align-items-center gap-3 p-5 bg-white rounded-4 shadow-sm border-top border-4 border-emerald h-100 transition-up">
@@ -372,7 +377,7 @@
             <div class="row g-5 mb-5 border-bottom border-secondary pb-5 text-center text-md-start">
                 <div class="col-md-6">
                     <div class="footer-logo d-flex align-items-center justify-content-center justify-content-md-start gap-3 mb-4">
-                        <img src="assets/logo.png" alt="Logo" class="custom-logo" style="width: 50px;">
+                        <img src="assets/logo2.jpg" alt="Logo" class="custom-logo" style="width: 80px; height: 80px;">
                         <div>
                             <span class="h4 fw-bold d-block mb-0">Çınardere Kurban</span>
                             <span class="small opacity-50">Erenler 2012'den beri</span>

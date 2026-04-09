@@ -29,16 +29,36 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. Smooth Scroll for Anchor Links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const href = this.getAttribute('href');
+            if (href === '#' || href === '') return;
+
+            const target = document.querySelector(href);
             if (target) {
-                const headerOffset = 80;
-                const elementPosition = target.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth"
-                });
+                e.preventDefault();
+
+                // Get navbar height
+                const navbar = document.getElementById('navbar');
+                const navHeight = navbar ? navbar.offsetHeight : 80;
+
+                // For mobile offcanvas: handling close
+                const offcanvasElement = document.getElementById('mobileMenu');
+                const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
+                if (bsOffcanvas) {
+                    bsOffcanvas.hide();
+                }
+
+                // If menu was closed, we wait a tiny bit for layout shift, then scroll
+                const scrollTimeout = bsOffcanvas ? 250 : 0;
+                
+                setTimeout(() => {
+                    const rect = target.getBoundingClientRect();
+                    const topPos = rect.top + window.pageYOffset - navHeight;
+                    
+                    window.scrollTo({
+                        top: topPos,
+                        behavior: "smooth"
+                    });
+                }, scrollTimeout);
             }
         });
     });

@@ -298,15 +298,14 @@
                 <div class="col-lg-8">
                     <div class="bg-white p-4 p-lg-5 rounded-4 shadow-sm">
                         <!-- Step Progress -->
-                        <div class="progress mb-4 bg-light rounded-pill" style="height: 8px;">
-                            <div id="inline-progress-bar" class="progress-bar bg-emerald progress-bar-striped progress-bar-animated rounded-pill" role="progressbar" style="width: 20%;"></div>
+                        <div class="d-flex justify-content-end mb-2 small text-muted fw-bold tracking-widest">
+                            <span class="text-uppercase text-secondary" style="letter-spacing: 2px; font-size: 0.75rem;">ADIM <span id="inline-current-step" class="text-dark fs-6">1</span> / 5</span>
                         </div>
-                        <div class="d-flex justify-content-between mb-5 small text-muted fw-bold">
-                            <span>ADIM <span id="inline-current-step">1</span>/5</span>
-                            <span id="inline-step-name" class="text-emerald text-uppercase">Hisse Türü</span>
+                        <div class="progress mb-5 bg-light rounded-pill overflow-visible" style="height: 4px;">
+                            <div id="inline-progress-bar" class="progress-bar rounded-pill" role="progressbar" style="width: 20%; background-color: #ff6b00;"></div>
                         </div>
                         
-                        <form id="inline-wizard-form">
+                        <form id="inline-wizard-form" class="mt-4">
                             <div id="inline-wizard-steps-container">
                                 <!-- Steps will be injected by JS -->
                             </div>

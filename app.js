@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h4 class="h5 fw-bold mb-4 text-center">Kurban Türünü Seçiniz</h4>
                     <div class="row g-4 justify-content-center">
                         <div class="col-6">
-                            <label class="wizard-card p-4 p-md-5 border rounded-4 text-center w-100 h-100 d-flex flex-column align-items-center justify-content-center cursor-pointer ${wizardData.type === 'Büyükbaş' ? 'border-success shadow' : ''}" style="min-height: 200px;">
+                            <label class="wizard-card p-4 p-md-5 border rounded-4 text-center w-100 h-100 d-flex flex-column align-items-center justify-content-center cursor-pointer ${wizardData.type === 'Büyükbaş' ? 'selected' : ''}" style="min-height: 200px;">
                                 <input type="radio" name="w_type" value="Büyükbaş" class="d-none" ${wizardData.type === 'Büyükbaş' ? 'checked' : ''}>
                                 <div class="display-1 mb-3">🐂</div>
                                 <span class="fw-bold fs-5">Büyükbaş</span>
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             </label>
                         </div>
                         <div class="col-6">
-                            <label class="wizard-card p-4 p-md-5 border rounded-4 text-center w-100 h-100 d-flex flex-column align-items-center justify-content-center cursor-pointer ${wizardData.type === 'Küçükbaş' ? 'border-success shadow' : ''}" style="min-height: 200px;">
+                            <label class="wizard-card p-4 p-md-5 border rounded-4 text-center w-100 h-100 d-flex flex-column align-items-center justify-content-center cursor-pointer ${wizardData.type === 'Küçükbaş' ? 'selected' : ''}" style="min-height: 200px;">
                                 <input type="radio" name="w_type" value="Küçükbaş" class="d-none" ${wizardData.type === 'Küçükbaş' ? 'checked' : ''}>
                                 <div class="display-1 mb-3">🐑</div>
                                 <span class="fw-bold fs-5">Küçükbaş</span>
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 packages.forEach(pkg => {
                     html += `
                         <div class="col-12">
-                            <label class="wizard-card p-3 p-md-4 border rounded-4 w-100 d-flex align-items-center gap-3 cursor-pointer ${wizardData.package === pkg.val ? 'border-success shadow-sm' : ''}">
+                            <label class="wizard-card p-3 p-md-4 border rounded-4 w-100 d-flex align-items-center gap-3 cursor-pointer ${wizardData.package === pkg.val ? 'selected' : ''}">
                                 <input type="radio" name="w_package" value="${pkg.val}" class="d-none" ${wizardData.package === pkg.val ? 'checked' : ''}>
                                 <div class="fs-2">${pkg.icon}</div>
                                 <div class="flex-grow-1">
@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h4 class="h5 fw-bold mb-4 text-center">Teslimat Tercihiniz</h4>
                     <div class="row g-4 justify-content-center">
                         <div class="col-6">
-                            <label class="wizard-card p-4 p-md-5 border rounded-4 text-center w-100 h-100 d-flex flex-column align-items-center justify-content-center cursor-pointer ${wizardData.delivery === 'Eve Teslim' ? 'border-success shadow' : ''}" style="min-height: 200px;">
+                            <label class="wizard-card p-4 p-md-5 border rounded-4 text-center w-100 h-100 d-flex flex-column align-items-center justify-content-center cursor-pointer ${wizardData.delivery === 'Eve Teslim' ? 'selected' : ''}" style="min-height: 200px;">
                                 <input type="radio" name="w_delivery" value="Eve Teslim" class="d-none" ${wizardData.delivery === 'Eve Teslim' ? 'checked' : ''}>
                                 <div class="display-1 mb-3">🏠</div>
                                 <span class="fw-bold fs-5">Eve Teslim</span>
@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             </label>
                         </div>
                         <div class="col-6">
-                            <label class="wizard-card p-4 p-md-5 border rounded-4 text-center w-100 h-100 d-flex flex-column align-items-center justify-content-center cursor-pointer ${wizardData.delivery === 'Şubeden Teslim' ? 'border-success shadow' : ''}" style="min-height: 200px;">
+                            <label class="wizard-card p-4 p-md-5 border rounded-4 text-center w-100 h-100 d-flex flex-column align-items-center justify-content-center cursor-pointer ${wizardData.delivery === 'Şubeden Teslim' ? 'selected' : ''}" style="min-height: 200px;">
                                 <input type="radio" name="w_delivery" value="Şubeden Teslim" class="d-none" ${wizardData.delivery === 'Şubeden Teslim' ? 'checked' : ''}>
                                 <div class="display-1 mb-3">🏪</div>
                                 <span class="fw-bold fs-5">Şubeden Teslim</span>
@@ -270,13 +270,13 @@ document.addEventListener('DOMContentLoaded', () => {
                             <label class="form-label fw-bold small text-muted text-uppercase" style="letter-spacing: 1px;">Hisse Kimin Adına?</label>
                             <div class="row g-2">
                                 <div class="col-6">
-                                    <label class="wizard-card p-3 border rounded-3 text-center w-100 cursor-pointer d-flex align-items-center justify-content-center gap-2 ${wizardData.onBehalf === 'Kendim' ? 'border-success shadow-sm' : ''}">
+                                    <label class="wizard-card p-3 border rounded-3 text-center w-100 cursor-pointer d-flex align-items-center justify-content-center gap-2 ${wizardData.onBehalf === 'Kendim' ? 'selected' : ''}">
                                         <input type="radio" name="w_onbehalf" value="Kendim" class="d-none" ${wizardData.onBehalf === 'Kendim' ? 'checked' : ''}>
                                         <span class="fw-bold">🙋 Kendim Adıma</span>
                                     </label>
                                 </div>
                                 <div class="col-6">
-                                    <label class="wizard-card p-3 border rounded-3 text-center w-100 cursor-pointer d-flex align-items-center justify-content-center gap-2 ${wizardData.onBehalf === 'Başkası' ? 'border-success shadow-sm' : ''}">
+                                    <label class="wizard-card p-3 border rounded-3 text-center w-100 cursor-pointer d-flex align-items-center justify-content-center gap-2 ${wizardData.onBehalf === 'Başkası' ? 'selected' : ''}">
                                         <input type="radio" name="w_onbehalf" value="Başkası" class="d-none" ${wizardData.onBehalf === 'Başkası' ? 'checked' : ''}>
                                         <span class="fw-bold">👥 Başkası Adına</span>
                                     </label>

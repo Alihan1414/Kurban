@@ -242,17 +242,16 @@ h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
 .wizard-card {
     background: var(--white);
     transition: var(--transition-smooth);
-    cursor: pointer;
+    border: 1px solid #eee !important;
 }
 .wizard-card:hover {
-    background: var(--emerald-light);
-    border-color: var(--emerald) !important;
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(27, 122, 61, 0.15) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08) !important;
+    border-color: #ccc !important;
 }
-.wizard-card input:checked + .icon-circle {
-    background: var(--emerald);
-    color: white;
+.wizard-card.selected {
+    border-color: #666 !important;
+    border-width: 2px !important;
 }
 .wizard-animal-img {
     transition: transform 0.3s ease;

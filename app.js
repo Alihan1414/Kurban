@@ -171,7 +171,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     ? [
                         { val: '1. GRUP (28.000 - 36.000 TL)', label: '1. GRUP', desc: '28.000TL — 36.000TL', icon: '🥉' },
                         { val: '2. GRUP (36.000 - 42.000 TL)', label: '2. GRUP', desc: '36.000TL — 42.000TL', icon: '🥈', popular: true },
-                        { val: '3. GRUP (42.000 TL & Üzeri)', label: '3. GRUP', desc: '42.000TL & Üzeri', icon: '🥇' }
+                        { val: '3. GRUP (42.000 TL & Üzeri)', label: '3. GRUP', desc: '42.000TL & Üzeri', icon: '🥇' },
+                        { val: 'BAĞIŞ KURBAN (14.000 TL)', label: 'BAĞIŞ KURBAN', desc: '14.000TL', icon: '❤️' }
                     ]
                     : [
                         { val: 'Koç / Koyun (14.500 TL)', label: 'Koç / Koyun', desc: '14.500 TL — 20-25 KG', icon: '🐑' },

@@ -255,16 +255,16 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <label for="w_address">📍 Teslimat Adresi</label>
                             </div>
                             <div class="form-text text-muted small mt-1"><i data-lucide="info" style="width:14px;height:14px;" class="me-1"></i>Mahalle, sokak, bina no ve daire no yazınız.</div>
-                        </div>` : `
+                        </div>` : (wizardData.delivery === 'Bağış' ? '' : `
                         <div class="col-12">
                             <div class="alert alert-light border rounded-3 d-flex align-items-center gap-2 mb-0">
                                 <span class="fs-4">📍</span>
                                 <div>
                                     <div class="fw-bold small">Şube Adresi</div>
-                                    <div class="small text-muted">Erenler / Sakarya — Kesim günü detaylar WhatsApp ile paylaşılacaktır.</div>
+                                    <div class="small text-muted">İstanbul / Pendik — Kesim günü detaylar WhatsApp ile paylaşılacaktır.</div>
                                 </div>
                             </div>
-                        </div>`}
+                        </div>`)}
                     </div>`;
                 break;
 
@@ -453,6 +453,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     wizardData.note = noteEl ? noteEl.value.trim() : '';
                 }
                 currentStep++;
+                if (currentStep === 3 && wizardData.package === 'BAĞIŞ KURBAN (14.000 TL)') {
+                    wizardData.delivery = 'Bağış';
+                    currentStep++;
+                }
                 updateWizardUI();
                 // Scroll to top of wizard
                 document.getElementById('wizard').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -468,7 +472,11 @@ document.addEventListener('DOMContentLoaded', () => {
         prevBtn.addEventListener('click', (e) => {
             e.preventDefault();
             if (currentStep > 1) {
-                currentStep--;
+                if (currentStep === 4 && wizardData.package === 'BAĞIŞ KURBAN (14.000 TL)') {
+                    currentStep -= 2;
+                } else {
+                    currentStep--;
+                }
                 updateWizardUI();
             }
         });
